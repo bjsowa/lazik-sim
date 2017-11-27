@@ -1,0 +1,1246 @@
+fileFormatVersion: 2
+guid: 0850c0ff416f0484687f23bf241beca8
+timeCreated: 1511232962
+licenseType: Free
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a0000003b0000003c0000003d0000003e0000003f000000400000004100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e0000004f000000500000005100000052000000530000005400000055000000560000005700000058000000590000005a0000005b0000005c0000005d0000005e0000005f000000600000006100000062000000630000006400000065000000660000006700000068000000690000006a0000006b0000006c0000006d0000006e0000006f000000700000007100000072000000730000007400000075000000760000007700000078000000790000007a0000007b0000007c0000007d0000007e0000007f00000080000000810000008200000083000000840000008500000086000000870000008800000089000000a0000000a1000000a2000000a3000000a4000000a5000000a6000000a7000000a8000000a9000000aa000000ab000000ac000000ad000000ae000000af000000b0000000b1000000b2000000b3000000b4000000b5000000b6000000b7000000b8000000b9000000ba000000bb000000bc000000bd000000be000000bf000000c0000000c1000000c2000000c3000000c4000000c5000000c6000000c7000000c8000000c9000000ca000000cb000000cc000000cd000000ce000000cf000000d0000000d1000000d2000000d3000000d4000000d5000000d6000000d7000000d8000000d9000000da000000db000000dc000000dd000000de000000df000000e0000000e1000000e2000000e3000000e4000000e5000000e6000000e7000000e8000000e9000000ea000000eb000000ec000000ed000000ee000000ef000000f0000000f1000000f2000000f3000000f4000000f5000000f6000000f7000000f8000000f9000000fa000000fb000000fc000000fd000000fe000000ff000000000100000101000002010000030100000401000005010000060100000701000008010000090100000a0100000b0100000c0100000d0100000e0100000f010000100100001101000012010000130100001401000015010000160100001701000018010000190100001a0100001b0100001c0100001d0100001e0100001f010000200100002101000022010000230100002401000025010000260100002701000028010000290100002a0100002b0100002c0100002d0100002e0100002f010000300100003101000032010000330100003401000035010000360100003701000038010000390100003a0100003b0100003c0100003d0100003e0100003f010000400100004101000042010000430100004401000045010000460100004701000048010000490100004a0100004b0100004c0100004d0100004e0100004f010000500100005101000052010000530100005401000055010000560100005701000058010000590100005a0100005b0100005c0100005d0100005e0100005f010000600100006101000062010000630100006401000065010000660100006701000068010000690100006a0100006b0100006c0100006d0100006e0100006f010000700100007101000072010000730100007401000075010000760100007701000078010000790100007a0100007b0100007c0100007d0100007e0100007f010000800100008101000082010000830100008401000085010000860100008701000088010000890100008a0100008b0100008c0100008d0100008e0100008f010000900100009101000092010000930100009401000095010000960100009701000098010000990100009a0100009b0100009c0100009d0100009e0100009f010000a0010000a1010000a2010000a3010000a4010000a5010000a6010000a7010000a8010000a9010000aa010000ab010000ac010000ad010000ae010000af010000b0010000b1010000b2010000b3010000b4010000b5010000b6010000b7010000b8010000b9010000ba010000bb010000bc010000bd010000be010000bf010000c0010000c1010000c2010000c3010000c4010000c5010000c6010000c7010000c8010000c9010000ca010000cb010000cc010000cd010000ce010000cf010000d0010000d1010000d2010000d3010000d4010000d5010000d6010000d7010000d8010000d9010000da010000db010000dc010000dd010000de010000df010000e0010000e1010000e2010000e3010000e4010000e5010000e6010000e7010000e8010000e9010000ea010000eb010000ec010000ed010000ee010000ef010000f0010000f1010000f2010000f3010000f4010000f5010000
+  assetHash:
+    serializedVersion: 2
+    Hash: c772bb01a863bffffb7d0df059cd8bf3
+  longitude: -105.242139
+  latitude: 40.018309
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 244558.6, y: 29432.97, z: 119191.34}
+      lookAt: {x: 0.5488179, y: 0.106084146, z: 0.6462285}
+      up: {x: -0.0966869, y: 0.99419874, z: -0.047122467}
+      fov: 45
+      aspectRatio: 0
+      orthoSize: 14.51534
+      isPerspective: 0
+    scenes: []
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: belka
+    100002: Boczek
+    100004: Boczek 1
+    100006: Bolec
+    100008: Bolec 1
+    100010: Bolec 2
+    100012: Bolec 3
+    100014: CaleRamie
+    100016: Chromosom#1
+    100018: Chromosom#1 1
+    100020: Component#1
+    100022: Component#1 1
+    100024: Component#2
+    100026: Component#2 1
+    100028: dd
+    100030: dd 1
+    100032: dd 2
+    100034: dd 3
+    100036: Drabinka
+    100038: Drabinka 1
+    100040: Drabinka2
+    100042: Drabinka3
+    100044: Group 1
+    100046: Group 10
+    100048: Group 101
+    100050: Group 102
+    100052: Group 104
+    100054: Group 106
+    100056: Group 108
+    100058: Group 110
+    100060: Group 112
+    100062: Group 113
+    100064: Group 115
+    100066: Group 117
+    100068: Group 119
+    100070: Group 121
+    100072: Group 13
+    100074: Group 131
+    100076: Group 15
+    100078: Group 165
+    100080: Group 166
+    100082: Group 168
+    100084: Group 170
+    100086: Group 172
+    100088: Group 174
+    100090: Group 176
+    100092: Group 178
+    100094: Group 180
+    100096: Group 182
+    100098: Group 184
+    100100: Group 186
+    100102: Group 188
+    100104: Group 190
+    100106: Group 192
+    100108: Group 194
+    100110: Group 196
+    100112: Group 198
+    100114: Group 200
+    100116: Group 202
+    100118: Group 204
+    100120: Group 206
+    100122: Group 208
+    100124: Group 210
+    100126: Group 212
+    100128: Group 214
+    100130: Group 222
+    100132: Group 223
+    100134: Group 225
+    100136: Group 227
+    100138: Group 229
+    100140: Group 231
+    100142: Group 233
+    100144: Group 235
+    100146: Group 237
+    100148: Group 239
+    100150: Group 241
+    100152: Group 243
+    100154: Group 245
+    100156: Group 247
+    100158: Group 249
+    100160: Group 251
+    100162: Group 253
+    100164: Group 255
+    100166: Group 257
+    100168: Group 259
+    100170: Group 261
+    100172: Group 263
+    100174: Group 265
+    100176: Group 267
+    100178: Group 269
+    100180: Group 271
+    100182: Group 29
+    100184: Group 3
+    100186: Group 308
+    100188: Group 310
+    100190: Group 312
+    100192: Group 314
+    100194: Group 316
+    100196: Group 318
+    100198: Group 32
+    100200: Group 329
+    100202: Group 330
+    100204: Group 332
+    100206: Group 334
+    100208: Group 336
+    100210: Group 338
+    100212: Group 340
+    100214: Group 342
+    100216: Group 344
+    100218: Group 346
+    100220: Group 348
+    100222: Group 350
+    100224: Group 352
+    100226: Group 354
+    100228: Group 356
+    100230: Group 358
+    100232: Group 360
+    100234: Group 362
+    100236: Group 364
+    100238: Group 366
+    100240: Group 368
+    100242: Group 370
+    100244: Group 372
+    100246: Group 374
+    100248: Group 376
+    100250: Group 378
+    100252: Group 386
+    100254: Group 387
+    100256: Group 389
+    100258: Group 391
+    100260: Group 393
+    100262: Group 395
+    100264: Group 397
+    100266: Group 399
+    100268: Group 401
+    100270: Group 403
+    100272: Group 405
+    100274: Group 407
+    100276: Group 409
+    100278: Group 411
+    100280: Group 413
+    100282: Group 415
+    100284: Group 417
+    100286: Group 419
+    100288: Group 421
+    100290: Group 423
+    100292: Group 425
+    100294: Group 427
+    100296: Group 429
+    100298: Group 431
+    100300: Group 433
+    100302: Group 435
+    100304: Group 44
+    100306: Group 472
+    100308: Group 474
+    100310: Group 476
+    100312: Group 478
+    100314: Group 480
+    100316: Group 482
+    100318: Group 496
+    100320: Group 5
+    100322: Group 52
+    100324: Group 55
+    100326: Group 58
+    100328: Group 60
+    100330: Group 67
+    100332: Group 69
+    100334: Group 7
+    100336: Group 75
+    100338: Group 77
+    100340: Group 78
+    100342: Group 80
+    100344: Group 81
+    100346: Group 83
+    100348: Group 84
+    100350: Group 86
+    100352: Group 88
+    100354: Group 9
+    100356: Group 90
+    100358: Group 92
+    100360: Group 94
+    100362: Group 96
+    100364: Group 97
+    100366: Group 99
+    100368: KolkoBL
+    100370: KolkoFE
+    100372: KolkoFL
+    100374: KolkoFR
+    100376: Kolo
+    100378: Kolo 1
+    100380: Kolo 2
+    100382: Kolo 3
+    100384: KoloCont
+    100386: KoloContPlask
+    100388: KoloObrotnicyDol
+    100390: Lazik
+    100392: //RootNode
+    100394: OD=10,00m ID=9,00m
+    100396: OD=10,00m ID=9,00m 1
+    100398: OD=10,00m ID=9,00m 10
+    100400: OD=10,00m ID=9,00m 11
+    100402: OD=10,00m ID=9,00m 12
+    100404: OD=10,00m ID=9,00m 13
+    100406: OD=10,00m ID=9,00m 14
+    100408: OD=10,00m ID=9,00m 15
+    100410: OD=10,00m ID=9,00m 16
+    100412: OD=10,00m ID=9,00m 17
+    100414: OD=10,00m ID=9,00m 18
+    100416: OD=10,00m ID=9,00m 19
+    100418: OD=10,00m ID=9,00m 2
+    100420: OD=10,00m ID=9,00m 20
+    100422: OD=10,00m ID=9,00m 21
+    100424: OD=10,00m ID=9,00m 22
+    100426: OD=10,00m ID=9,00m 23
+    100428: OD=10,00m ID=9,00m 24
+    100430: OD=10,00m ID=9,00m 25
+    100432: OD=10,00m ID=9,00m 26
+    100434: OD=10,00m ID=9,00m 27
+    100436: OD=10,00m ID=9,00m 28
+    100438: OD=10,00m ID=9,00m 29
+    100440: OD=10,00m ID=9,00m 3
+    100442: OD=10,00m ID=9,00m 4
+    100444: OD=10,00m ID=9,00m 5
+    100446: OD=10,00m ID=9,00m 6
+    100448: OD=10,00m ID=9,00m 7
+    100450: OD=10,00m ID=9,00m 8
+    100452: OD=10,00m ID=9,00m 9
+    100454: OD=20,00m ID=16,00m
+    100456: OD=20,00m ID=16,00m 1
+    100458: oporowa
+    100460: oporowa 1
+    100462: Pal#1
+    100464: Pal#1 1
+    100466: pasek
+    100468: pasek 1
+    100470: PierscienSerwaOstatniegoPrzegubu#1
+    100472: PierscienSerwaOstatniegoPrzegubu#1 1
+    100474: PierscienSerwaOstatniegoPrzegubu#1 2
+    100476: PierscienSerwaOstatniegoPrzegubu#1 3
+    100478: Ramie
+    100480: Ramie2
+    100482: RamiePrzod
+    100484: RamieSmall
+    100486: RamieSmall 1
+    100488: RamieTyl
+    100490: ScianaOporowaPrzegubu
+    100492: servo
+    100494: servo 1
+    100496: servo 2
+    100498: servo 3
+    100500: Side
+    100502: Side#1
+    100504: sphere#1
+    100506: sphere#1 1
+    100508: sphere#1 2
+    100510: sphere#1 3
+    100512: trzymak
+    100514: trzymak 1
+    100516: trzymakBoczny
+    100518: trzymakBoczny 1
+    400000: belka
+    400002: Boczek
+    400004: Boczek 1
+    400006: Bolec
+    400008: Bolec 1
+    400010: Bolec 2
+    400012: Bolec 3
+    400014: CaleRamie
+    400016: Chromosom#1
+    400018: Chromosom#1 1
+    400020: Component#1
+    400022: Component#1 1
+    400024: Component#2
+    400026: Component#2 1
+    400028: dd
+    400030: dd 1
+    400032: dd 2
+    400034: dd 3
+    400036: Drabinka
+    400038: Drabinka 1
+    400040: Drabinka2
+    400042: Drabinka3
+    400044: Group 1
+    400046: Group 10
+    400048: Group 101
+    400050: Group 102
+    400052: Group 104
+    400054: Group 106
+    400056: Group 108
+    400058: Group 110
+    400060: Group 112
+    400062: Group 113
+    400064: Group 115
+    400066: Group 117
+    400068: Group 119
+    400070: Group 121
+    400072: Group 13
+    400074: Group 131
+    400076: Group 15
+    400078: Group 165
+    400080: Group 166
+    400082: Group 168
+    400084: Group 170
+    400086: Group 172
+    400088: Group 174
+    400090: Group 176
+    400092: Group 178
+    400094: Group 180
+    400096: Group 182
+    400098: Group 184
+    400100: Group 186
+    400102: Group 188
+    400104: Group 190
+    400106: Group 192
+    400108: Group 194
+    400110: Group 196
+    400112: Group 198
+    400114: Group 200
+    400116: Group 202
+    400118: Group 204
+    400120: Group 206
+    400122: Group 208
+    400124: Group 210
+    400126: Group 212
+    400128: Group 214
+    400130: Group 222
+    400132: Group 223
+    400134: Group 225
+    400136: Group 227
+    400138: Group 229
+    400140: Group 231
+    400142: Group 233
+    400144: Group 235
+    400146: Group 237
+    400148: Group 239
+    400150: Group 241
+    400152: Group 243
+    400154: Group 245
+    400156: Group 247
+    400158: Group 249
+    400160: Group 251
+    400162: Group 253
+    400164: Group 255
+    400166: Group 257
+    400168: Group 259
+    400170: Group 261
+    400172: Group 263
+    400174: Group 265
+    400176: Group 267
+    400178: Group 269
+    400180: Group 271
+    400182: Group 29
+    400184: Group 3
+    400186: Group 308
+    400188: Group 310
+    400190: Group 312
+    400192: Group 314
+    400194: Group 316
+    400196: Group 318
+    400198: Group 32
+    400200: Group 329
+    400202: Group 330
+    400204: Group 332
+    400206: Group 334
+    400208: Group 336
+    400210: Group 338
+    400212: Group 340
+    400214: Group 342
+    400216: Group 344
+    400218: Group 346
+    400220: Group 348
+    400222: Group 350
+    400224: Group 352
+    400226: Group 354
+    400228: Group 356
+    400230: Group 358
+    400232: Group 360
+    400234: Group 362
+    400236: Group 364
+    400238: Group 366
+    400240: Group 368
+    400242: Group 370
+    400244: Group 372
+    400246: Group 374
+    400248: Group 376
+    400250: Group 378
+    400252: Group 386
+    400254: Group 387
+    400256: Group 389
+    400258: Group 391
+    400260: Group 393
+    400262: Group 395
+    400264: Group 397
+    400266: Group 399
+    400268: Group 401
+    400270: Group 403
+    400272: Group 405
+    400274: Group 407
+    400276: Group 409
+    400278: Group 411
+    400280: Group 413
+    400282: Group 415
+    400284: Group 417
+    400286: Group 419
+    400288: Group 421
+    400290: Group 423
+    400292: Group 425
+    400294: Group 427
+    400296: Group 429
+    400298: Group 431
+    400300: Group 433
+    400302: Group 435
+    400304: Group 44
+    400306: Group 472
+    400308: Group 474
+    400310: Group 476
+    400312: Group 478
+    400314: Group 480
+    400316: Group 482
+    400318: Group 496
+    400320: Group 5
+    400322: Group 52
+    400324: Group 55
+    400326: Group 58
+    400328: Group 60
+    400330: Group 67
+    400332: Group 69
+    400334: Group 7
+    400336: Group 75
+    400338: Group 77
+    400340: Group 78
+    400342: Group 80
+    400344: Group 81
+    400346: Group 83
+    400348: Group 84
+    400350: Group 86
+    400352: Group 88
+    400354: Group 9
+    400356: Group 90
+    400358: Group 92
+    400360: Group 94
+    400362: Group 96
+    400364: Group 97
+    400366: Group 99
+    400368: KolkoBL
+    400370: KolkoFE
+    400372: KolkoFL
+    400374: KolkoFR
+    400376: Kolo
+    400378: Kolo 1
+    400380: Kolo 2
+    400382: Kolo 3
+    400384: KoloCont
+    400386: KoloContPlask
+    400388: KoloObrotnicyDol
+    400390: Lazik
+    400392: //RootNode
+    400394: OD=10,00m ID=9,00m
+    400396: OD=10,00m ID=9,00m 1
+    400398: OD=10,00m ID=9,00m 10
+    400400: OD=10,00m ID=9,00m 11
+    400402: OD=10,00m ID=9,00m 12
+    400404: OD=10,00m ID=9,00m 13
+    400406: OD=10,00m ID=9,00m 14
+    400408: OD=10,00m ID=9,00m 15
+    400410: OD=10,00m ID=9,00m 16
+    400412: OD=10,00m ID=9,00m 17
+    400414: OD=10,00m ID=9,00m 18
+    400416: OD=10,00m ID=9,00m 19
+    400418: OD=10,00m ID=9,00m 2
+    400420: OD=10,00m ID=9,00m 20
+    400422: OD=10,00m ID=9,00m 21
+    400424: OD=10,00m ID=9,00m 22
+    400426: OD=10,00m ID=9,00m 23
+    400428: OD=10,00m ID=9,00m 24
+    400430: OD=10,00m ID=9,00m 25
+    400432: OD=10,00m ID=9,00m 26
+    400434: OD=10,00m ID=9,00m 27
+    400436: OD=10,00m ID=9,00m 28
+    400438: OD=10,00m ID=9,00m 29
+    400440: OD=10,00m ID=9,00m 3
+    400442: OD=10,00m ID=9,00m 4
+    400444: OD=10,00m ID=9,00m 5
+    400446: OD=10,00m ID=9,00m 6
+    400448: OD=10,00m ID=9,00m 7
+    400450: OD=10,00m ID=9,00m 8
+    400452: OD=10,00m ID=9,00m 9
+    400454: OD=20,00m ID=16,00m
+    400456: OD=20,00m ID=16,00m 1
+    400458: oporowa
+    400460: oporowa 1
+    400462: Pal#1
+    400464: Pal#1 1
+    400466: pasek
+    400468: pasek 1
+    400470: PierscienSerwaOstatniegoPrzegubu#1
+    400472: PierscienSerwaOstatniegoPrzegubu#1 1
+    400474: PierscienSerwaOstatniegoPrzegubu#1 2
+    400476: PierscienSerwaOstatniegoPrzegubu#1 3
+    400478: Ramie
+    400480: Ramie2
+    400482: RamiePrzod
+    400484: RamieSmall
+    400486: RamieSmall 1
+    400488: RamieTyl
+    400490: ScianaOporowaPrzegubu
+    400492: servo
+    400494: servo 1
+    400496: servo 2
+    400498: servo 3
+    400500: Side
+    400502: Side#1
+    400504: sphere#1
+    400506: sphere#1 1
+    400508: sphere#1 2
+    400510: sphere#1 3
+    400512: trzymak
+    400514: trzymak 1
+    400516: trzymakBoczny
+    400518: trzymakBoczny 1
+    2300000: belka
+    2300002: Bolec
+    2300004: Bolec 1
+    2300006: Bolec 2
+    2300008: Bolec 3
+    2300010: Component#1
+    2300012: Component#1 1
+    2300014: dd
+    2300016: dd 1
+    2300018: dd 2
+    2300020: dd 3
+    2300022: Drabinka
+    2300024: Drabinka 1
+    2300026: Drabinka2
+    2300028: Drabinka3
+    2300030: Group 1
+    2300032: Group 102
+    2300034: Group 104
+    2300036: Group 106
+    2300038: Group 108
+    2300040: Group 110
+    2300042: Group 113
+    2300044: Group 115
+    2300046: Group 117
+    2300048: Group 119
+    2300050: Group 121
+    2300052: Group 13
+    2300054: Group 131
+    2300056: Group 15
+    2300058: Group 166
+    2300060: Group 168
+    2300062: Group 170
+    2300064: Group 172
+    2300066: Group 174
+    2300068: Group 176
+    2300070: Group 178
+    2300072: Group 180
+    2300074: Group 182
+    2300076: Group 184
+    2300078: Group 186
+    2300080: Group 188
+    2300082: Group 190
+    2300084: Group 192
+    2300086: Group 194
+    2300088: Group 196
+    2300090: Group 198
+    2300092: Group 200
+    2300094: Group 202
+    2300096: Group 204
+    2300098: Group 206
+    2300100: Group 208
+    2300102: Group 210
+    2300104: Group 212
+    2300106: Group 214
+    2300108: Group 223
+    2300110: Group 225
+    2300112: Group 227
+    2300114: Group 229
+    2300116: Group 231
+    2300118: Group 233
+    2300120: Group 235
+    2300122: Group 237
+    2300124: Group 239
+    2300126: Group 241
+    2300128: Group 243
+    2300130: Group 245
+    2300132: Group 247
+    2300134: Group 249
+    2300136: Group 251
+    2300138: Group 253
+    2300140: Group 255
+    2300142: Group 257
+    2300144: Group 259
+    2300146: Group 261
+    2300148: Group 263
+    2300150: Group 265
+    2300152: Group 267
+    2300154: Group 269
+    2300156: Group 271
+    2300158: Group 29
+    2300160: Group 3
+    2300162: Group 308
+    2300164: Group 310
+    2300166: Group 312
+    2300168: Group 314
+    2300170: Group 316
+    2300172: Group 318
+    2300174: Group 32
+    2300176: Group 330
+    2300178: Group 332
+    2300180: Group 334
+    2300182: Group 336
+    2300184: Group 338
+    2300186: Group 340
+    2300188: Group 342
+    2300190: Group 344
+    2300192: Group 346
+    2300194: Group 348
+    2300196: Group 350
+    2300198: Group 352
+    2300200: Group 354
+    2300202: Group 356
+    2300204: Group 358
+    2300206: Group 360
+    2300208: Group 362
+    2300210: Group 364
+    2300212: Group 366
+    2300214: Group 368
+    2300216: Group 370
+    2300218: Group 372
+    2300220: Group 374
+    2300222: Group 376
+    2300224: Group 378
+    2300226: Group 387
+    2300228: Group 389
+    2300230: Group 391
+    2300232: Group 393
+    2300234: Group 395
+    2300236: Group 397
+    2300238: Group 399
+    2300240: Group 401
+    2300242: Group 403
+    2300244: Group 405
+    2300246: Group 407
+    2300248: Group 409
+    2300250: Group 411
+    2300252: Group 413
+    2300254: Group 415
+    2300256: Group 417
+    2300258: Group 419
+    2300260: Group 421
+    2300262: Group 423
+    2300264: Group 425
+    2300266: Group 427
+    2300268: Group 429
+    2300270: Group 431
+    2300272: Group 433
+    2300274: Group 435
+    2300276: Group 44
+    2300278: Group 472
+    2300280: Group 474
+    2300282: Group 476
+    2300284: Group 478
+    2300286: Group 480
+    2300288: Group 482
+    2300290: Group 496
+    2300292: Group 5
+    2300294: Group 52
+    2300296: Group 55
+    2300298: Group 58
+    2300300: Group 60
+    2300302: Group 67
+    2300304: Group 69
+    2300306: Group 7
+    2300308: Group 75
+    2300310: Group 78
+    2300312: Group 81
+    2300314: Group 84
+    2300316: Group 86
+    2300318: Group 88
+    2300320: Group 90
+    2300322: Group 92
+    2300324: Group 94
+    2300326: Group 97
+    2300328: Group 99
+    2300330: KoloCont
+    2300332: KoloContPlask
+    2300334: KoloObrotnicyDol
+    2300336: OD=10,00m ID=9,00m
+    2300338: OD=10,00m ID=9,00m 1
+    2300340: OD=10,00m ID=9,00m 10
+    2300342: OD=10,00m ID=9,00m 11
+    2300344: OD=10,00m ID=9,00m 12
+    2300346: OD=10,00m ID=9,00m 13
+    2300348: OD=10,00m ID=9,00m 14
+    2300350: OD=10,00m ID=9,00m 15
+    2300352: OD=10,00m ID=9,00m 16
+    2300354: OD=10,00m ID=9,00m 17
+    2300356: OD=10,00m ID=9,00m 18
+    2300358: OD=10,00m ID=9,00m 19
+    2300360: OD=10,00m ID=9,00m 2
+    2300362: OD=10,00m ID=9,00m 20
+    2300364: OD=10,00m ID=9,00m 21
+    2300366: OD=10,00m ID=9,00m 22
+    2300368: OD=10,00m ID=9,00m 23
+    2300370: OD=10,00m ID=9,00m 24
+    2300372: OD=10,00m ID=9,00m 25
+    2300374: OD=10,00m ID=9,00m 26
+    2300376: OD=10,00m ID=9,00m 27
+    2300378: OD=10,00m ID=9,00m 28
+    2300380: OD=10,00m ID=9,00m 29
+    2300382: OD=10,00m ID=9,00m 3
+    2300384: OD=10,00m ID=9,00m 4
+    2300386: OD=10,00m ID=9,00m 5
+    2300388: OD=10,00m ID=9,00m 6
+    2300390: OD=10,00m ID=9,00m 7
+    2300392: OD=10,00m ID=9,00m 8
+    2300394: OD=10,00m ID=9,00m 9
+    2300396: OD=20,00m ID=16,00m
+    2300398: OD=20,00m ID=16,00m 1
+    2300400: oporowa
+    2300402: oporowa 1
+    2300404: pasek
+    2300406: pasek 1
+    2300408: PierscienSerwaOstatniegoPrzegubu#1
+    2300410: PierscienSerwaOstatniegoPrzegubu#1 1
+    2300412: PierscienSerwaOstatniegoPrzegubu#1 2
+    2300414: PierscienSerwaOstatniegoPrzegubu#1 3
+    2300416: Ramie
+    2300418: Ramie2
+    2300420: RamieSmall
+    2300422: RamieSmall 1
+    2300424: sphere#1
+    2300426: sphere#1 1
+    2300428: sphere#1 2
+    2300430: sphere#1 3
+    2300432: trzymak
+    2300434: trzymak 1
+    2300436: trzymakBoczny
+    2300438: trzymakBoczny 1
+    3300000: belka
+    3300002: Bolec
+    3300004: Bolec 1
+    3300006: Bolec 2
+    3300008: Bolec 3
+    3300010: Component#1
+    3300012: Component#1 1
+    3300014: dd
+    3300016: dd 1
+    3300018: dd 2
+    3300020: dd 3
+    3300022: Drabinka
+    3300024: Drabinka 1
+    3300026: Drabinka2
+    3300028: Drabinka3
+    3300030: Group 1
+    3300032: Group 102
+    3300034: Group 104
+    3300036: Group 106
+    3300038: Group 108
+    3300040: Group 110
+    3300042: Group 113
+    3300044: Group 115
+    3300046: Group 117
+    3300048: Group 119
+    3300050: Group 121
+    3300052: Group 13
+    3300054: Group 131
+    3300056: Group 15
+    3300058: Group 166
+    3300060: Group 168
+    3300062: Group 170
+    3300064: Group 172
+    3300066: Group 174
+    3300068: Group 176
+    3300070: Group 178
+    3300072: Group 180
+    3300074: Group 182
+    3300076: Group 184
+    3300078: Group 186
+    3300080: Group 188
+    3300082: Group 190
+    3300084: Group 192
+    3300086: Group 194
+    3300088: Group 196
+    3300090: Group 198
+    3300092: Group 200
+    3300094: Group 202
+    3300096: Group 204
+    3300098: Group 206
+    3300100: Group 208
+    3300102: Group 210
+    3300104: Group 212
+    3300106: Group 214
+    3300108: Group 223
+    3300110: Group 225
+    3300112: Group 227
+    3300114: Group 229
+    3300116: Group 231
+    3300118: Group 233
+    3300120: Group 235
+    3300122: Group 237
+    3300124: Group 239
+    3300126: Group 241
+    3300128: Group 243
+    3300130: Group 245
+    3300132: Group 247
+    3300134: Group 249
+    3300136: Group 251
+    3300138: Group 253
+    3300140: Group 255
+    3300142: Group 257
+    3300144: Group 259
+    3300146: Group 261
+    3300148: Group 263
+    3300150: Group 265
+    3300152: Group 267
+    3300154: Group 269
+    3300156: Group 271
+    3300158: Group 29
+    3300160: Group 3
+    3300162: Group 308
+    3300164: Group 310
+    3300166: Group 312
+    3300168: Group 314
+    3300170: Group 316
+    3300172: Group 318
+    3300174: Group 32
+    3300176: Group 330
+    3300178: Group 332
+    3300180: Group 334
+    3300182: Group 336
+    3300184: Group 338
+    3300186: Group 340
+    3300188: Group 342
+    3300190: Group 344
+    3300192: Group 346
+    3300194: Group 348
+    3300196: Group 350
+    3300198: Group 352
+    3300200: Group 354
+    3300202: Group 356
+    3300204: Group 358
+    3300206: Group 360
+    3300208: Group 362
+    3300210: Group 364
+    3300212: Group 366
+    3300214: Group 368
+    3300216: Group 370
+    3300218: Group 372
+    3300220: Group 374
+    3300222: Group 376
+    3300224: Group 378
+    3300226: Group 387
+    3300228: Group 389
+    3300230: Group 391
+    3300232: Group 393
+    3300234: Group 395
+    3300236: Group 397
+    3300238: Group 399
+    3300240: Group 401
+    3300242: Group 403
+    3300244: Group 405
+    3300246: Group 407
+    3300248: Group 409
+    3300250: Group 411
+    3300252: Group 413
+    3300254: Group 415
+    3300256: Group 417
+    3300258: Group 419
+    3300260: Group 421
+    3300262: Group 423
+    3300264: Group 425
+    3300266: Group 427
+    3300268: Group 429
+    3300270: Group 431
+    3300272: Group 433
+    3300274: Group 435
+    3300276: Group 44
+    3300278: Group 472
+    3300280: Group 474
+    3300282: Group 476
+    3300284: Group 478
+    3300286: Group 480
+    3300288: Group 482
+    3300290: Group 496
+    3300292: Group 5
+    3300294: Group 52
+    3300296: Group 55
+    3300298: Group 58
+    3300300: Group 60
+    3300302: Group 67
+    3300304: Group 69
+    3300306: Group 7
+    3300308: Group 75
+    3300310: Group 78
+    3300312: Group 81
+    3300314: Group 84
+    3300316: Group 86
+    3300318: Group 88
+    3300320: Group 90
+    3300322: Group 92
+    3300324: Group 94
+    3300326: Group 97
+    3300328: Group 99
+    3300330: KoloCont
+    3300332: KoloContPlask
+    3300334: KoloObrotnicyDol
+    3300336: OD=10,00m ID=9,00m
+    3300338: OD=10,00m ID=9,00m 1
+    3300340: OD=10,00m ID=9,00m 10
+    3300342: OD=10,00m ID=9,00m 11
+    3300344: OD=10,00m ID=9,00m 12
+    3300346: OD=10,00m ID=9,00m 13
+    3300348: OD=10,00m ID=9,00m 14
+    3300350: OD=10,00m ID=9,00m 15
+    3300352: OD=10,00m ID=9,00m 16
+    3300354: OD=10,00m ID=9,00m 17
+    3300356: OD=10,00m ID=9,00m 18
+    3300358: OD=10,00m ID=9,00m 19
+    3300360: OD=10,00m ID=9,00m 2
+    3300362: OD=10,00m ID=9,00m 20
+    3300364: OD=10,00m ID=9,00m 21
+    3300366: OD=10,00m ID=9,00m 22
+    3300368: OD=10,00m ID=9,00m 23
+    3300370: OD=10,00m ID=9,00m 24
+    3300372: OD=10,00m ID=9,00m 25
+    3300374: OD=10,00m ID=9,00m 26
+    3300376: OD=10,00m ID=9,00m 27
+    3300378: OD=10,00m ID=9,00m 28
+    3300380: OD=10,00m ID=9,00m 29
+    3300382: OD=10,00m ID=9,00m 3
+    3300384: OD=10,00m ID=9,00m 4
+    3300386: OD=10,00m ID=9,00m 5
+    3300388: OD=10,00m ID=9,00m 6
+    3300390: OD=10,00m ID=9,00m 7
+    3300392: OD=10,00m ID=9,00m 8
+    3300394: OD=10,00m ID=9,00m 9
+    3300396: OD=20,00m ID=16,00m
+    3300398: OD=20,00m ID=16,00m 1
+    3300400: oporowa
+    3300402: oporowa 1
+    3300404: pasek
+    3300406: pasek 1
+    3300408: PierscienSerwaOstatniegoPrzegubu#1
+    3300410: PierscienSerwaOstatniegoPrzegubu#1 1
+    3300412: PierscienSerwaOstatniegoPrzegubu#1 2
+    3300414: PierscienSerwaOstatniegoPrzegubu#1 3
+    3300416: Ramie
+    3300418: Ramie2
+    3300420: RamieSmall
+    3300422: RamieSmall 1
+    3300424: sphere#1
+    3300426: sphere#1 1
+    3300428: sphere#1 2
+    3300430: sphere#1 3
+    3300432: trzymak
+    3300434: trzymak 1
+    3300436: trzymakBoczny
+    3300438: trzymakBoczny 1
+    4300000: Mesh Group 1
+    4300002: Mesh Group 3
+    4300004: Mesh Group 5
+    4300006: Mesh Group 7
+    4300008: Mesh Group 13
+    4300010: Mesh Ramie2
+    4300012: Mesh Drabinka3
+    4300014: Mesh Drabinka2
+    4300016: Mesh Ramie
+    4300018: Mesh KoloCont
+    4300020: Mesh pasek
+    4300022: Mesh Group 29
+    4300024: Mesh Group 32
+    4300026: Mesh Drabinka
+    4300028: Mesh RamieSmall
+    4300030: Mesh pasek
+    4300032: Mesh KoloContPlask
+    4300034: Mesh Group 58
+    4300036: Mesh Group 60
+    4300038: Mesh trzymakBoczny
+    4300040: Mesh KoloObrotnicyDol
+    4300042: Mesh belka
+    4300044: Mesh Group 75
+    4300046: Mesh Group 78
+    4300048: Mesh Group 81
+    4300050: Mesh Group 84
+    4300052: Mesh Group 86
+    4300054: Mesh Group 88
+    4300056: Mesh Group 90
+    4300058: Mesh Group 92
+    4300060: Mesh Group 94
+    4300062: Mesh Group 97
+    4300064: Mesh Group 99
+    4300066: Mesh Group 102
+    4300068: Mesh Group 104
+    4300070: Mesh Group 106
+    4300072: Mesh Group 108
+    4300074: Mesh Component#1
+    4300076: Mesh oporowa
+    4300078: Mesh Group 131
+    4300080: Mesh sphere#1
+    4300082: Mesh dd
+    4300084: Mesh Group 166
+    4300086: Mesh Group 168
+    4300088: Mesh Group 170
+    4300090: Mesh Group 172
+    4300092: Mesh Group 174
+    4300094: Mesh Group 176
+    4300096: Mesh Group 178
+    4300098: Mesh Group 180
+    4300100: Mesh Group 182
+    4300102: Mesh Group 184
+    4300104: Mesh Group 186
+    4300106: Mesh Group 188
+    4300108: Mesh Group 190
+    4300110: Mesh Group 192
+    4300112: Mesh Group 194
+    4300114: Mesh Group 196
+    4300116: Mesh Group 198
+    4300118: Mesh Group 200
+    4300120: Mesh Group 202
+    4300122: Mesh Group 204
+    4300124: Mesh Group 206
+    4300126: Mesh Group 208
+    4300128: Mesh Group 210
+    4300130: Mesh Group 212
+    4300132: Mesh Group 214
+    4300134: Mesh Bolec
+    4300136: Mesh OD=10,00m ID=9,00m
+    4300138: Mesh OD=10,00m ID=9,00m
+    4300140: Mesh OD=10,00m ID=9,00m
+    4300142: Mesh OD=10,00m ID=9,00m
+    4300144: Mesh OD=10,00m ID=9,00m
+    4300146: Mesh OD=10,00m ID=9,00m
+    4300148: Mesh OD=10,00m ID=9,00m
+    4300150: Mesh OD=10,00m ID=9,00m
+    4300152: Mesh OD=10,00m ID=9,00m
+    4300154: Mesh OD=10,00m ID=9,00m
+    4300156: Mesh OD=10,00m ID=9,00m
+    4300158: Mesh OD=10,00m ID=9,00m
+    4300160: Mesh OD=10,00m ID=9,00m
+    4300162: Mesh OD=10,00m ID=9,00m
+    4300164: Mesh OD=10,00m ID=9,00m
+    4300166: Mesh OD=20,00m ID=16,00m
+    4300168: Mesh Group 308
+    4300170: Mesh Group 310
+    4300172: Mesh Group 312
+    4300174: Mesh Group 314
+    4300176: Mesh Group 316
+    4300178: Mesh PierscienSerwaOstatniegoPrzegubu#1
+    4300180: Mesh trzymak
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 0011_Seashell
+    second: {fileID: 2100000, guid: 4f1a8578729af8f4294a618559384a1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 0015_Salmon((dif_0.89,fre_1))
+    second: {fileID: 2100000, guid: 1eeaf753f4382c9499793b4f50ae9a8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 0020_Red
+    second: {fileID: 2100000, guid: 4bc22ca5422d3954da7e2edae08771d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 100PerfectMirror((dif_0.05,ref_0.94,fre_1))
+    second: {fileID: 2100000, guid: 9d77451ba24d8c947a4e0c5f95855e2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 100PerfectMirrorFresnel[[dif_0.00,ref_1.00,fre_1]]
+    second: {fileID: 2100000, guid: 3479119a37038914999df287943e66df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Asphalt_New
+    second: {fileID: 2100000, guid: 18041d845c06aac4faab06a4ff442668, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ChromosomMat((dif_0.89,brdf_2,p1_0.25,p2_0.25,fre_1))
+    second: {fileID: 2100000, guid: 7a53c8731db4074428228ffbbf8e9d45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_000((dif_0.00,ref_1.00,fre_1))
+    second: {fileID: 2100000, guid: dc570d6a2b17b704890bff2daa1c1a49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_001
+    second: {fileID: 2100000, guid: b50d795b8d47c2c4e930194fb4c4e66e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_001((dif_0.76,ref_0.03,fre_1))
+    second: {fileID: 2100000, guid: 03d14bc632dde2d40b781e3883404c26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_004((dif_0.90,brdf_1,p1_206.00))
+    second: {fileID: 2100000, guid: 3be3219684c03e6498f5b1d1c17deb0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_008
+    second: {fileID: 2100000, guid: a91f6931c4088c943bb6817830ef1f38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_009((dif_0.90,brdf_1,p1_163.00))
+    second: {fileID: 2100000, guid: a4431a97257730741b0369f9bcf9a277, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_A04
+    second: {fileID: 2100000, guid: e0ec8539dc28b7c48b2ad8d27939ba57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_A05
+    second: {fileID: 2100000, guid: d5c0cf060a05dca4fa33d62db0170ebf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Color_001]1'
+    second: {fileID: 2100000, guid: d2d4ca73b2741544ea452cf6c56be2e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Color_A05]1'
+    second: {fileID: 2100000, guid: ba7d7ecca80bef64399f4bf044504a0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _defaultMat
+    second: {fileID: 2100000, guid: 7413260d91f90ff44af675c480fc8f52, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
