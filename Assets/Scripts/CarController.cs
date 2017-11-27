@@ -26,7 +26,6 @@ public class CarController : MonoBehaviour
 
 		float wheelCircumference = m_WheelColliders [0].radius * Mathf.PI * 2f;
 		m_MaxRPM = (m_NoLoadSpeed / wheelCircumference) * 1000f / 60f;
-		Debug.Log (m_MaxRPM);
     }
 		
 
@@ -42,7 +41,7 @@ public class CarController : MonoBehaviour
 
         //clamp input values
         steering = Mathf.Clamp (steering, -1, 1);
-        accel = Mathf.Clamp (accel, 0, 1);
+        accel = Mathf.Clamp (accel, -1, 1);
         //BrakeInput = footbrake = -1 * Mathf.Clamp (footbrake, -1, 0);
         //handbrake = Mathf.Clamp (handbrake, 0, 1);
 
@@ -50,6 +49,9 @@ public class CarController : MonoBehaviour
 
         AddDownForce ();
         //TractionControl ();
+
+		Debug.Log ("speed: " + m_Rigidbody.velocity.magnitude * 3.6f);
+		//Debug.Log(accel + " " + steering);
     }
 
 
@@ -58,12 +60,17 @@ public class CarController : MonoBehaviour
 
         float thrustTorque;
 
-		thrustTorque = accel * m_StallTorque;
+		thrustTorque = (accel * m_StallTorque);
         for (int i = 0; i < 4; i++) {
-            m_WheelColliders [i].motorTorque = thrustTorque;
+			
+			m_WheelColliders [i].motorTorque = thrustTorque * (m_MaxRPM - m_WheelColliders[i].rpm) / m_MaxRPM;
         }
 
 
+		m_WheelColliders [0].motorTorque -= steering * m_StallTorque;
+		m_WheelColliders [1].motorTorque += steering * m_StallTorque;
+		m_WheelColliders [2].motorTorque -= steering * m_StallTorque;
+		m_WheelColliders [3].motorTorque += steering * m_StallTorque;
     }
 
 
