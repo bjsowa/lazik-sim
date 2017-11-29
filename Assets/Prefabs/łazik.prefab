@@ -666,8 +666,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4556483709929028}
   - component: {fileID: 54457142365039878}
-  - component: {fileID: 114504780411076292}
-  - component: {fileID: 114969080810301502}
+  - component: {fileID: 114912262301472364}
+  - component: {fileID: 114790036519934030}
+  - component: {fileID: 114272115550781778}
   m_Layer: 0
   m_Name: "\u0142azik"
   m_TagString: Untagged
@@ -6549,7 +6550,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121631446368418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.276, y: 3.711, z: -24.027}
+  m_LocalPosition: {x: -6.892, y: 1.077, z: -2.8331718}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4175029019729190}
@@ -17532,8 +17533,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121631446368418}
   serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 0.1
+  m_Mass: 500
+  m_Drag: 0.2
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -17559,7 +17560,32 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750816570744724}
   m_Enabled: 1
---- !u!114 &114504780411076292
+--- !u!114 &114272115550781778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121631446368418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96468c245ae8e0d4f8f1c7a7b8b0542e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114790036519934030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121631446368418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bbebeb2cc0e3e4c94690439cf9d732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TopSpeed: 20
+  m_P: 1
+  m_D: 1
+--- !u!114 &114912262301472364
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -17580,22 +17606,12 @@ MonoBehaviour:
   - {fileID: 1951966703845434}
   - {fileID: 1843957688884584}
   - {fileID: 1043860771300746}
-  m_CentreOfMassOffset: {x: 0, y: 0.21, z: 0}
-  m_MaxTorque: 200
-  m_BreakTorque: 1000
-  m_Downforce: 50
-  m_Topspeed: 30
---- !u!114 &114969080810301502
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121631446368418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96468c245ae8e0d4f8f1c7a7b8b0542e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_CentreOfMassOffset: {x: 0, y: 0, z: 0}
+  m_StallTorque: 100
+  m_NoLoadSpeed: 40
+  m_BreakTorque: -3.79
+  m_DownForce: 100
+  speed: 0
 --- !u!124 &124098232103002298
 Behaviour:
   m_ObjectHideFlags: 1
@@ -17617,7 +17633,7 @@ WheelCollider:
     targetPosition: 0.2
   m_SuspensionDistance: 0.02
   m_ForceAppPointDistance: 0.1
-  m_Mass: 40
+  m_Mass: 30
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -17646,7 +17662,7 @@ WheelCollider:
     targetPosition: 0.2
   m_SuspensionDistance: 0.02
   m_ForceAppPointDistance: 0.1
-  m_Mass: 40
+  m_Mass: 30
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -17675,7 +17691,7 @@ WheelCollider:
     targetPosition: 0.2
   m_SuspensionDistance: 0.02
   m_ForceAppPointDistance: 0.1
-  m_Mass: 40
+  m_Mass: 30
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -17704,7 +17720,7 @@ WheelCollider:
     targetPosition: 0.2
   m_SuspensionDistance: 0.02
   m_ForceAppPointDistance: 0.1
-  m_Mass: 40
+  m_Mass: 30
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
