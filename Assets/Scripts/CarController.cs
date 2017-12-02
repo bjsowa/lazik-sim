@@ -17,6 +17,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float m_DownForce = 100f;
 
     private Rigidbody m_Rigidbody;
+	private float m_WheelCircumference;
 	private float m_MaxRPM;
 
 	[HideInInspector] public float speed = 0f;
@@ -26,8 +27,8 @@ public class CarController : MonoBehaviour
         m_WheelColliders [0].attachedRigidbody.centerOfMass = m_CentreOfMassOffset;
         m_Rigidbody = GetComponent<Rigidbody> ();
 
-		float wheelCircumference = m_WheelColliders [0].radius * Mathf.PI * 2f;
-		m_MaxRPM = (m_NoLoadSpeed / wheelCircumference) * 1000f / 60f;
+		m_WheelCircumference = m_WheelColliders [0].radius * Mathf.PI * 2f;
+		m_MaxRPM = (m_NoLoadSpeed / m_WheelCircumference) * 1000f / 60f;
     }
 		
 
@@ -50,11 +51,27 @@ public class CarController : MonoBehaviour
         ApplyDrive (accel, steering);
 
         AddDownForce ();
+
+		CalculateSpeed ();
         //TractionControl ();
-		speed = m_Rigidbody.velocity.magnitude * 3.6f;
-		Debug.Log ("speed: " + speed);
+		//speed = m_WheelCircumference * m_WheelColliders[0].rpm * (60f / 1000f);
+			//m_Rigidbody.velocity.magnitude * 3.6f;
+		//speed = m_Rigidbody.velocity.x * 3.6f;
+		//speed = 0;
+		//Debug.Log ("speed: " + speed);
+			//Debug.Log("speed: " + m_Rigidbody.velocity.x * transform.forward.x + );
 		//Debug.Log(accel + " " + steering);
     }
+
+	private void CalculateSpeed()
+	{
+		float xSpeed = m_Rigidbody.velocity.x * transform.forward.x;
+		float ySpeed = m_Rigidbody.velocity.y * transform.forward.y;
+		float zSpeed = m_Rigidbody.velocity.z * transform.forward.z;
+		speed = (xSpeed + ySpeed + zSpeed) * 3.6f;
+
+		Debug.Log("speed: " + speed);
+	}
 
 
     private void ApplyDrive (float accel, float steering)
@@ -67,7 +84,7 @@ public class CarController : MonoBehaviour
 		ApplyTorque (2, rightAccel);
 		ApplyTorque (3, leftAccel);
 
-		Debug.Log ("left: " + leftAccel + " right: " + rightAccel);
+		//Debug.Log ("left: " + leftAccel + " right: " + rightAccel);
     }
 
 	private void ApplyTorque(int i, float accel)
