@@ -778,7 +778,7 @@ public class GraphManager : MonoBehaviour
 	}
 
     // Use this for initialization
-    void Start()
+    public void startGraph()
     {
         // Create static instance
         Graph = new GraphManagerInstance();
@@ -793,6 +793,14 @@ public class GraphManager : MonoBehaviour
         CreateGlobalObjects();
     }
 
+	// Use this for initialization
+	public void stopGraph()
+	{
+		Graph = null;
+
+		Destroy (GraphManagerUI);
+	}
+
     // Update is called once per frame
     void Update()
     {
@@ -801,11 +809,11 @@ public class GraphManager : MonoBehaviour
         {
             Graph.Update();
         }
-        else
-        {
-            Graph = new GraphManagerInstance();
-            CreateGlobalObjects();
-        }
+        //else
+        //{
+        //    Graph = new GraphManagerInstance();
+        //    CreateGlobalObjects();
+        //}
     }
 
     private void RenderGraph()
