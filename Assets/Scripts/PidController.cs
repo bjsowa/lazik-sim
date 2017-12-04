@@ -15,9 +15,10 @@ public class PidController : MonoBehaviour
 	private float previousError = 0f;
 	private float currentError = 0f;
 
-	private float proportional = 0f;
-	private float integral = 0f;
-	private float derivative = 0f;
+	[HideInInspector] public float proportional = 0f;
+	[HideInInspector] public float integral = 0f;
+	[HideInInspector] public float derivative = 0f;
+	[HideInInspector] public float accel = 0f;
 
 	void Awake() {
 		m_Car = GetComponent<CarController> ();
@@ -44,12 +45,12 @@ public class PidController : MonoBehaviour
 		integral += m_I * (currentError + previousError) / 2f * Time.deltaTime;
 		derivative = m_D * (currentError - previousError) / Time.deltaTime;
 
-		float accel = Mathf.Clamp((proportional + integral + derivative) / m_TopSpeed, -1, 1);
+		accel = Mathf.Clamp((proportional + integral + derivative) / m_TopSpeed, -1, 1);
 
 		m_Car.Move (accel, steering);
 
-		Debug.Log ("target speed: " + targetSpeed);
-		Debug.Log ("accel: " + accel);
+		//Debug.Log ("target speed: " + targetSpeed);
+		//Debug.Log ("accel: " + accel);
 
 		previousError = currentError;
 	}

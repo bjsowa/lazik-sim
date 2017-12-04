@@ -138,6 +138,8 @@ public class GraphManager : MonoBehaviour
 
         public List<GPUDataPair> DataPairs;
 
+		public bool fixedRange;
+
         public string Name;
         // UI
 
@@ -181,6 +183,7 @@ public class GraphManager : MonoBehaviour
             Rectangle = new Vector4(0, 0, 1.0f, 0.2f);
             Name = "";
             ParentUI = null;
+			fixedRange = false;
 
             ResetDefault();
         }
@@ -231,16 +234,28 @@ public class GraphManager : MonoBehaviour
             }
         }
 
+		public void SetRange(float min, float max)
+		{
+			fixedRange = true;
+			MinValue = min;
+			MaxValue = max;
+			CurrentRange = MaxValue - MinValue;
+
+			Debug.Log (Name + " " + MinValue.ToString () + " " + MaxValue.ToString ()); 
+		}
+
         public void UpdateStats(float dataPoint)
         {
-            ResetDefault();
+            //ResetDefault();
 
             for (int i = 0; i < DataPairs.Count; ++i)
             {
                 float currentDataPoint = DataPairs[i].Value;
 
-                MinValue = Mathf.Min(MinValue, currentDataPoint);
-                MaxValue = Mathf.Max(MaxValue, currentDataPoint);
+				if (!fixedRange) {
+					MinValue = Mathf.Min (MinValue, currentDataPoint);
+					MaxValue = Mathf.Max (MaxValue, currentDataPoint);
+				}
 
                 AverageValue += currentDataPoint;
             }
@@ -651,7 +666,7 @@ public class GraphManager : MonoBehaviour
 
             if (AvgText)
             {
-                AvgText.text = string.Format("{0:n2}", AverageValue);
+                AvgText.text = string.Format("{0:n2}", CurrentValue);
             }
         }
     }
@@ -659,6 +674,8 @@ public class GraphManager : MonoBehaviour
     // Contains the wrapper with all graph
     public class GraphManagerInstance
     {
+		public Dictionary<string, GPUGraphData> Graphs;
+
         public GraphManagerInstance()
         {
             Graphs = new Dictionary<string, GPUGraphData>();
@@ -672,7 +689,7 @@ public class GraphManager : MonoBehaviour
             }
         }
 
-        public GPUGraphData Retrieve(string key, float value)
+        public GPUGraphData Retrieve(string key)
         {
             GPUGraphData graphData;
 
@@ -718,33 +735,38 @@ public class GraphManager : MonoBehaviour
         // screen space plot
         public void Plot(string key, float value)
         {
-            Retrieve(key, value).AddPair(value);
+            Retrieve(key).AddPair(value);
         }
 
         // world space
         public void Plot(string key, float value, Matrix4x4Wrapper trs)
         {
-            Retrieve(key, value).AddPair(value, trs);
+            Retrieve(key).AddPair(value, trs);
         }
 
         public void Plot(string key, float value, Color color)
         {
-            Retrieve(key, value).AddPair(value, color);
+            Retrieve(key).AddPair(value, color);
         }
 
         // screen space plot
         public void Plot(string key, float value, Color color, Rect rectangle)
         {
-            Retrieve(key, value).AddPair(value, color, rectangle);
+            Retrieve(key).AddPair(value, color, rectangle);
         }
 
         // world space plot
         public void Plot(string key, float value, Color color, Matrix4x4Wrapper trs)
         {
-            Retrieve(key, value).AddPair(value, color, trs);
+            Retrieve(key).AddPair(value, color, trs);
         }
 
-        public Dictionary<string, GPUGraphData> Graphs;
+		// screen space plot, fixed range
+		public void Plot(string key, float value, Color color, Rect rectangle, float minValue, float maxValue)
+		{
+			Retrieve(key).SetRange (minValue, maxValue);
+			Retrieve(key).AddPair(value, color, rectangle);
+		}
     }
 
     static GameObject CreateGlobalObjects()
