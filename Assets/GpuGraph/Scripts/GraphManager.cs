@@ -240,8 +240,6 @@ public class GraphManager : MonoBehaviour
 			MinValue = min;
 			MaxValue = max;
 			CurrentRange = MaxValue - MinValue;
-
-			Debug.Log (Name + " " + MinValue.ToString () + " " + MaxValue.ToString ()); 
 		}
 
         public void UpdateStats(float dataPoint)

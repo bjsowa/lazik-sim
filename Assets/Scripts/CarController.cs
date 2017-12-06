@@ -70,7 +70,8 @@ public class CarController : MonoBehaviour
 		float zSpeed = m_Rigidbody.velocity.z * transform.forward.z;
 		speed = (xSpeed + ySpeed + zSpeed) * 3.6f;
 
-		//Debug.Log("speed: " + speed);
+		Debug.Log("velocity: " + m_Rigidbody.velocity.magnitude * 3.6f);
+		Debug.Log("speed: " + speed);
 	}
 
 

@@ -1468,6 +1468,66 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_D
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_I
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54457142365039878, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 146249961686415790, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 146707634708092858, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 146204352054232800, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 146534769420404808, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 146249961686415790, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 146707634708092858, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 146204352054232800, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 146534769420404808, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_TopSpeed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f99651d89ac6e8645a9928a620799386, type: 2}
   m_IsPrefabParent: 0

@@ -41,11 +41,11 @@ public class PidController : MonoBehaviour
 		float targetSpeed = speedFactor * m_TopSpeed;
 		currentError = targetSpeed - carSpeed;
 
-		proportional = m_P * currentError;
-		integral += m_I * (currentError + previousError) / 2f * Time.deltaTime;
-		derivative = m_D * (currentError - previousError) / Time.deltaTime;
+		proportional = m_P * currentError / m_TopSpeed;
+		integral += (m_I * (currentError + previousError) / 2f * Time.deltaTime) / m_TopSpeed;
+		derivative = (m_D * (currentError - previousError) / Time.deltaTime) / m_TopSpeed;
 
-		accel = Mathf.Clamp((proportional + integral + derivative) / m_TopSpeed, -1, 1);
+		accel = Mathf.Clamp(proportional + integral + derivative, -1, 1);
 
 		m_Car.Move (accel, steering);
 
