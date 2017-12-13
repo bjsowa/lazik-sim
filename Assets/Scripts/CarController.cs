@@ -79,8 +79,8 @@ public class CarController : MonoBehaviour
 
     private void ApplyDrive (float accel, float steering)
     {
-		float leftAccel = Mathf.Clamp (accel + steering, -1, 1);
-		float rightAccel = Mathf.Clamp (accel - steering, -1, 1);
+		float leftAccel = Mathf.Clamp (accel + 2f*steering, -1, 1);
+		float rightAccel = Mathf.Clamp (accel - 2f*steering, -1, 1);
 
 		ApplyTorque (0, rightAccel);
 		ApplyTorque (1, leftAccel);
