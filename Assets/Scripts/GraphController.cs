@@ -33,23 +33,40 @@ public class GraphController : MonoBehaviour
 		}
 
 		if (isOn) {
-			Rect SpeedRect = new Rect (0f, 0f, 
+			Rect ForwardSpeedRect = new Rect (0f, 0f, 
 				(2f / 6f) * Screen.width, .2f * Screen.height);
 			Rect AccelRect = new Rect ((2f / 6f) * Screen.width, 0f, 
 				(1f / 6f) * Screen.width, .2f * Screen.height);
-			Rect ProportionalRect = new Rect ((3f / 6f) * Screen.width, 0f, 
+			Rect AccelProportionalRect = new Rect ((3f / 6f) * Screen.width, 0f, 
 				(1f / 6f) * Screen.width, .2f * Screen.height);
-			Rect IntegralRect = new Rect ((4f / 6f) * Screen.width, 0f, 
+			Rect AccelIntegralRect = new Rect ((4f / 6f) * Screen.width, 0f, 
 				(1f / 6f) * Screen.width, .2f * Screen.height);
-			Rect DerivativeRect = new Rect ((5f / 6f) * Screen.width, 0f, 
+			Rect AccelDerivativeRect = new Rect ((5f / 6f) * Screen.width, 0f, 
+				(1f / 6f) * Screen.width, .2f * Screen.height);
+
+			Rect AngularSpeedRect = new Rect (0f, .2f * Screen.height, 
+				(2f / 6f) * Screen.width, .2f * Screen.height);
+			Rect SteeringRect = new Rect ((2f / 6f) * Screen.width, .2f * Screen.height, 
+				(1f / 6f) * Screen.width, .2f * Screen.height);
+			Rect SteeringProportionalRect = new Rect ((3f / 6f) * Screen.width, .2f * Screen.height, 
+				(1f / 6f) * Screen.width, .2f * Screen.height);
+			Rect SteeringIntegralRect = new Rect ((4f / 6f) * Screen.width, .2f * Screen.height, 
+				(1f / 6f) * Screen.width, .2f * Screen.height);
+			Rect SteeringDerivativeRect = new Rect ((5f / 6f) * Screen.width, .2f * Screen.height, 
 				(1f / 6f) * Screen.width, .2f * Screen.height);
 
 			if (GraphManager.Graph != null) {
-				GraphManager.Graph.Plot ("SpeedGraph", m_Car.speed, Color.green, SpeedRect, -20f, 20f);
-				GraphManager.Graph.Plot ("AccelGraph", m_Pid.accel, Color.red, AccelRect, -1f, 1f);
-				GraphManager.Graph.Plot ("ProportionalGraph", m_Pid.proportional, Color.red, ProportionalRect);
-				GraphManager.Graph.Plot ("IntegralGraph", m_Pid.integral, Color.red, IntegralRect);
-				GraphManager.Graph.Plot ("DerivativeGraph", m_Pid.derivative, Color.red, DerivativeRect);
+				GraphManager.Graph.Plot ("ForwardSpeedGraph", m_Car.speed, Color.green, ForwardSpeedRect, -20f, 20f);
+				GraphManager.Graph.Plot ("AccelGraph", m_Pid.accelResult, Color.red, AccelRect, -1f, 1f);
+				GraphManager.Graph.Plot ("AccelProportionalGraph", m_Pid.accelProportional, Color.red, AccelProportionalRect);
+				GraphManager.Graph.Plot ("AccelIntegralGraph", m_Pid.accelIntegral, Color.red, AccelIntegralRect);
+				GraphManager.Graph.Plot ("AccelDerivativeGraph", m_Pid.accelDerivative, Color.red, AccelDerivativeRect);
+
+				GraphManager.Graph.Plot ("AngularSpeedGraph", m_Car.angularSpeed, Color.green, AngularSpeedRect, -1f, 1f);
+				GraphManager.Graph.Plot ("SteeringGraph", m_Pid.steeringResult, Color.red, SteeringRect, -1f, 1f);
+				GraphManager.Graph.Plot ("SteeringProportionalGraph", m_Pid.steeringProportional, Color.red, SteeringProportionalRect);
+				GraphManager.Graph.Plot ("SteeringIntegralGraph", m_Pid.steeringIntegral, Color.red, SteeringIntegralRect);
+				GraphManager.Graph.Plot ("SteeringDerivativeGraph", m_Pid.steeringDerivative, Color.red, SteeringDerivativeRect);
 			}
 		}
 	}

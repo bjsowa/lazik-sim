@@ -21,6 +21,7 @@ public class CarController : MonoBehaviour
 	private float m_MaxRPM;
 
 	[HideInInspector] public float speed = 0f;
+	[HideInInspector] public float angularSpeed = 0f;
 
     private void Start ()
     {
@@ -70,8 +71,9 @@ public class CarController : MonoBehaviour
 		float zSpeed = m_Rigidbody.velocity.z * transform.forward.z;
 		speed = (xSpeed + ySpeed + zSpeed) * 3.6f;
 
-		Debug.Log("velocity: " + m_Rigidbody.velocity.magnitude * 3.6f);
-		Debug.Log("speed: " + speed);
+		angularSpeed = m_Rigidbody.angularVelocity.y;
+
+		Debug.Log("angularSpeed: " + angularSpeed);
 	}
 
 
