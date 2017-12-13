@@ -1442,7 +1442,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4556483709929028, guid: f99651d89ac6e8645a9928a620799386, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.077
+      value: 1.011
       objectReference: {fileID: 0}
     - target: {fileID: 4556483709929028, guid: f99651d89ac6e8645a9928a620799386, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1526,7 +1526,7 @@ Prefab:
     - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
         type: 2}
       propertyPath: m_TopSpeed
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 146534769420404808, guid: f99651d89ac6e8645a9928a620799386,
         type: 2}
@@ -1596,12 +1596,42 @@ Prefab:
     - target: {fileID: 114912262301472364, guid: f99651d89ac6e8645a9928a620799386,
         type: 2}
       propertyPath: m_NoLoadSpeed
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 114912262301472364, guid: f99651d89ac6e8645a9928a620799386,
         type: 2}
       propertyPath: m_BreakTorque
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_DForward
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_TopForwardSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114912262301472364, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_DownForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_TopAngularSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_DAngular
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_AngularSpeedThreshold
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f99651d89ac6e8645a9928a620799386, type: 2}
