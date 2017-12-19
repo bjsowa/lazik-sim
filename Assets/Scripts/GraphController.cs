@@ -55,6 +55,9 @@ public class GraphController : MonoBehaviour
 			Rect SteeringDerivativeRect = new Rect ((5f / 6f) * Screen.width, .2f * Screen.height, 
 				(1f / 6f) * Screen.width, .2f * Screen.height);
 
+			Rect FixRect = new Rect (Screen.width, .2f * Screen.height, 
+				(1f / 6f) * Screen.width, .2f * Screen.height);
+
 			if (GraphManager.Graph != null) {
 				GraphManager.Graph.Plot ("ForwardSpeedGraph", m_Car.speed, Color.green, ForwardSpeedRect, -20f, 20f);
 				GraphManager.Graph.Plot ("AccelGraph", m_Pid.accelResult, Color.red, AccelRect, -1f, 1f);
@@ -67,6 +70,8 @@ public class GraphController : MonoBehaviour
 				GraphManager.Graph.Plot ("SteeringProportionalGraph", m_Pid.steeringProportional, Color.red, SteeringProportionalRect);
 				GraphManager.Graph.Plot ("SteeringIntegralGraph", m_Pid.steeringIntegral, Color.red, SteeringIntegralRect);
 				GraphManager.Graph.Plot ("SteeringDerivativeGraph", m_Pid.steeringDerivative, Color.red, SteeringDerivativeRect);
+
+				GraphManager.Graph.Plot ("fix", 0, Color.red, FixRect);
 			}
 		}
 	}

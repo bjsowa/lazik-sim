@@ -16,6 +16,8 @@ public class CarController : MonoBehaviour
 	[SerializeField] private float m_BreakTorque = 100f;
     [SerializeField] private float m_DownForce = 100f;
 
+	[SerializeField] private float m_SteeringMultiplier = 2f;
+
     private Rigidbody m_Rigidbody;
 	private float m_WheelCircumference;
 	private float m_MaxRPM;
@@ -73,14 +75,14 @@ public class CarController : MonoBehaviour
 
 		angularSpeed = m_Rigidbody.angularVelocity.y;
 
-		Debug.Log("angularSpeed: " + angularSpeed);
+		//Debug.Log("angularSpeed: " + angularSpeed);
 	}
 
 
     private void ApplyDrive (float accel, float steering)
     {
-		float leftAccel = Mathf.Clamp (accel + 2f*steering, -1, 1);
-		float rightAccel = Mathf.Clamp (accel - 2f*steering, -1, 1);
+		float leftAccel = Mathf.Clamp (accel + m_SteeringMultiplier*steering, -1, 1);
+		float rightAccel = Mathf.Clamp (accel - m_SteeringMultiplier*steering, -1, 1);
 
 		ApplyTorque (0, rightAccel);
 		ApplyTorque (1, leftAccel);
