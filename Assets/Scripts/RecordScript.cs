@@ -20,8 +20,9 @@ public class RecordScript : MonoBehaviour {
 	private bool isSaving;
 	private Vector3 saved_position;
 	private Quaternion saved_rotation;
+	private bool m_isRecording = false;
 
-	[SerializeField] private Camera CenterCamera;
+	[SerializeField] private Camera CenterCamera = new Camera();
 
 	private void Awake() {
 		m_Rigidbody = GetComponent<Rigidbody> ();
@@ -29,7 +30,25 @@ public class RecordScript : MonoBehaviour {
 		m_Controller = GetComponent<PidController> ();
 	}
 
-	private bool m_isRecording = false;
+	void Update() {
+		if (Input.GetKeyDown (KeyCode.R)) {
+			ToggleRecording ();
+		}
+	}
+
+	public void ToggleRecording()
+	{
+		if (!IsRecording)
+		{
+			if (checkSaveLocation()) 
+				IsRecording = true;
+		}
+		else
+		{
+			IsRecording = false;
+		}
+	}
+
 	public bool IsRecording {
 		get {
 			return m_isRecording;
