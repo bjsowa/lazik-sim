@@ -40,13 +40,14 @@ public class PidController : MonoBehaviour
 	void Awake() {
 		m_Car = GetComponent<CarController> ();
 	}
-		
-	// Update is called once per frame
-	public void Move (float accelUser, float steeringUser) {
 
+	public void Move (float accelUser, float steeringUser) {
 		accel = accelUser;
 		steering = steeringUser;
-		
+	}
+
+	void FixedUpdate() 
+	{
 		float carForwardSpeed = m_Car.speed;
 		if (Mathf.Abs (carForwardSpeed) < m_ForwardSpeedThreshold) {
 			carForwardSpeed = 0f;
