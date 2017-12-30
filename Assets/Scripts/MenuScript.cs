@@ -19,4 +19,9 @@ public class MenuScript : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    void Update() {
+        if (Input.GetButtonDown("Cancel"))
+            Exit();
+    }
 }
