@@ -30,51 +30,38 @@ public class RecordScript : MonoBehaviour {
 		m_Controller = GetComponent<PidController> ();
 	}
 
-	void Update() {
-		if (Input.GetKeyDown (KeyCode.R)) {
-			ToggleRecording ();
-		}
-	}
-
-	public void ToggleRecording()
-	{
-		if (!IsRecording)
-		{
-			if (checkSaveLocation()) 
-				IsRecording = true;
-		}
-		else
-		{
-			IsRecording = false;
-		}
-	}
-
 	public bool IsRecording {
 		get {
 			return m_isRecording;
 		}
 		set {
-			m_isRecording = value;
-			if(value == true)
-			{ 
-				Debug.Log("Starting to record");
-				carSamples = new Queue<CarSample>();
-				StartCoroutine(Sample());             
-			} 
-			else
-			{
-				Debug.Log("Stopping record");
-				StopCoroutine(Sample());
-				Debug.Log("Writing to disk");
-				//save the cars coordinate parameters so we can reset it to this properly after capturing data
-				saved_position = transform.position;
-				saved_rotation = transform.rotation;
-				//see how many samples we captured use this to show save percentage in UISystem script
-				TotalSamples = carSamples.Count;
-				isSaving = true;
-				StartCoroutine(WriteSamplesToDisk());
-
-			};
+            if (m_isRecording != value)
+            {
+                if (value == true)
+                {
+                    if (checkSaveLocation())
+                    {
+                        m_isRecording = true;
+                        Debug.Log("Starting to record");
+                        carSamples = new Queue<CarSample>();
+                        StartCoroutine(Sample());
+                    }
+                }
+                else
+                {
+                    m_isRecording = false;
+                    Debug.Log("Stopping record");
+                    StopCoroutine(Sample());
+                    Debug.Log("Writing to disk");
+                    //save the cars coordinate parameters so we can reset it to this properly after capturing data
+                    saved_position = transform.position;
+                    saved_rotation = transform.rotation;
+                    //see how many samples we captured use this to show save percentage in UISystem script
+                    TotalSamples = carSamples.Count;
+                    isSaving = true;
+                    StartCoroutine(WriteSamplesToDisk());
+                }
+            }
 		}
 	}
 		
