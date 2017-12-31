@@ -304,7 +304,9 @@ namespace SocketIO
 			#if SOCKET_IO_DEBUG
 			debugMethod.Invoke("[SocketIO] " + packet);
 			#endif
-			
+
+
+            #pragma warning disable 0168
 			try {
 				ws.Send(encoder.Encode(packet));
 			} catch(SocketIOException ex) {
@@ -312,8 +314,8 @@ namespace SocketIO
 				debugMethod.Invoke(ex.ToString());
 				#endif
 			}
-		}
-
+            #pragma warning restore 0168
+        }
 		private void OnOpen(object sender, EventArgs e)
 		{
 			EmitEvent("open");
@@ -396,6 +398,7 @@ namespace SocketIO
 		{
 			if (!handlers.ContainsKey(ev.name)) { return; }
 			foreach (Action<SocketIOEvent> handler in this.handlers[ev.name]) {
+                #pragma warning disable 0168
 				try{
 					handler(ev);
 				} catch(Exception ex){
@@ -403,6 +406,7 @@ namespace SocketIO
 					debugMethod.Invoke(ex.ToString());
 					#endif
 				}
+                #pragma warning restore 0168
 			}
 		}
 
