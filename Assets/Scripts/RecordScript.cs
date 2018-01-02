@@ -43,10 +43,10 @@ public class RecordScript : MonoBehaviour {
     public int totalSamples { get; private set; }
     public bool isSaving { get; private set; }
 
-    public float getSavePercent()
+    public int getSavePercent()
     {
         float part = (float)(totalSamples - m_CarSamples.Count) / totalSamples;
-        return (float)Math.Round(100f * part);
+        return (int)Math.Round(100f * part);
     }
 
     public bool isRecording {
