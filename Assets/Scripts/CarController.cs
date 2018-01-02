@@ -48,22 +48,11 @@ public class CarController : MonoBehaviour
         //clamp input values
         steering = Mathf.Clamp (steering, -1, 1);
         accel = Mathf.Clamp (accel, -1, 1);
-        //BrakeInput = footbrake = -1 * Mathf.Clamp (footbrake, -1, 0);
-        //handbrake = Mathf.Clamp (handbrake, 0, 1);
 
         ApplyDrive (accel, steering);
 
         AddDownForce ();
-
 		CalculateSpeed ();
-        //TractionControl ();
-		//speed = m_WheelCircumference * m_WheelColliders[0].rpm * (60f / 1000f);
-			//m_Rigidbody.velocity.magnitude * 3.6f;
-		//speed = m_Rigidbody.velocity.x * 3.6f;
-		//speed = 0;
-		//Debug.Log ("speed: " + speed);
-			//Debug.Log("speed: " + m_Rigidbody.velocity.x * transform.forward.x + );
-		//Debug.Log(accel + " " + steering);
     }
 
 	private void CalculateSpeed()
@@ -74,8 +63,6 @@ public class CarController : MonoBehaviour
 		speed = (xSpeed + ySpeed + zSpeed) * 3.6f;
 
 		angularSpeed = m_Rigidbody.angularVelocity.y;
-
-		//Debug.Log("angularSpeed: " + angularSpeed);
 	}
 
 
@@ -88,8 +75,6 @@ public class CarController : MonoBehaviour
 		ApplyTorque (1, leftAccel);
 		ApplyTorque (2, rightAccel);
 		ApplyTorque (3, leftAccel);
-
-		//Debug.Log ("left: " + leftAccel + " right: " + rightAccel);
     }
 
 	private void ApplyTorque(int i, float accel)

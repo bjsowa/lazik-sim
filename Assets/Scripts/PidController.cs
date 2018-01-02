@@ -36,8 +36,10 @@ public class PidController : MonoBehaviour
 
 	public float accel { get; private set; }
 	public float steering { get; private set; }
+    public float targetSpeed { get; private set; }
+    public float targetAngularSpeed { get; private set; }
 
-	void Awake() {
+	private void Awake() {
 		m_Car = GetComponent<CarController> ();
 	}
 
@@ -46,7 +48,7 @@ public class PidController : MonoBehaviour
 		steering = steeringUser;
 	}
 
-	void FixedUpdate() 
+	private void FixedUpdate() 
 	{
 		float carForwardSpeed = m_Car.speed;
 		if (Mathf.Abs (carForwardSpeed) < m_ForwardSpeedThreshold) {
@@ -54,8 +56,8 @@ public class PidController : MonoBehaviour
 			accelIntegral = 0f;
 		}
 			
-		float targetForwardSpeed = accel * m_TopForwardSpeed;
-		currentForwardError = targetForwardSpeed - carForwardSpeed;
+		targetSpeed = accel * m_TopForwardSpeed;
+		currentForwardError = targetSpeed - carForwardSpeed;
 
 		accelProportional = m_PForward * currentForwardError / m_TopForwardSpeed;
 		accelIntegral += (m_IForward * (currentForwardError + previousForwardError) / 2f * Time.deltaTime) / m_TopForwardSpeed;
@@ -72,7 +74,7 @@ public class PidController : MonoBehaviour
 			steeringIntegral = 0f;
 		}
 
-		float targetAngularSpeed = steering * m_TopAngularSpeed;
+		targetAngularSpeed = steering * m_TopAngularSpeed;
 		currentAngularError = targetAngularSpeed - carAngularSpeed;
 
 		steeringProportional = m_PAngular * currentAngularError / m_TopAngularSpeed;
