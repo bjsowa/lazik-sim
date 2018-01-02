@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 114253828492840782}
   m_Layer: 0
   m_Name: "\u0142azik"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17690,7 +17690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6a49789234b0440976508990d5f959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CenterCamera: {fileID: 20676455179812908}
+  m_CenterCamera: {fileID: 20676455179812908}
 --- !u!114 &114272115550781778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17718,11 +17718,11 @@ MonoBehaviour:
   m_IForward: 1
   m_DForward: 0.15
   m_ForwardSpeedThreshold: 1
-  m_TopAngularSpeed: 1.5
+  m_TopAngularSpeed: 15
   m_PAngular: 1
   m_IAngular: 1
   m_DAngular: 0.02
-  m_AngularSpeedThreshold: 0.1
+  m_AngularSpeedThreshold: 1
   accelProportional: 0
   accelIntegral: 0
   accelDerivative: 0
@@ -17798,7 +17798,7 @@ WheelCollider:
     damper: 200
     targetPosition: 0.2
   m_SuspensionDistance: 0.02
-  m_ForceAppPointDistance: 0.1
+  m_ForceAppPointDistance: 0.4
   m_Mass: 5
   m_WheelDampingRate: 0.025
   m_ForwardFriction:
@@ -17827,7 +17827,7 @@ WheelCollider:
     damper: 200
     targetPosition: 0.2
   m_SuspensionDistance: 0.02
-  m_ForceAppPointDistance: 0.1
+  m_ForceAppPointDistance: 0.4
   m_Mass: 5
   m_WheelDampingRate: 0.025
   m_ForwardFriction:
@@ -17841,7 +17841,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 0.5
+    m_Stiffness: 0.65
   m_Enabled: 1
 --- !u!146 &146534769420404808
 WheelCollider:
@@ -17856,7 +17856,7 @@ WheelCollider:
     damper: 200
     targetPosition: 0.2
   m_SuspensionDistance: 0.02
-  m_ForceAppPointDistance: 0.1
+  m_ForceAppPointDistance: 0.4
   m_Mass: 5
   m_WheelDampingRate: 0.025
   m_ForwardFriction:
@@ -17885,7 +17885,7 @@ WheelCollider:
     damper: 200
     targetPosition: 0.2
   m_SuspensionDistance: 0.02
-  m_ForceAppPointDistance: 0.1
+  m_ForceAppPointDistance: 0.4
   m_Mass: 5
   m_WheelDampingRate: 0.025
   m_ForwardFriction:
@@ -17899,5 +17899,5 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 0.5
+    m_Stiffness: 0.65
   m_Enabled: 1
