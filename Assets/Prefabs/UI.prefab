@@ -255,6 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b75a558dde0a94f8ed677d9fc733b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_RecordSprite: {fileID: 21300000, guid: ec929ae9df6f0a247adbeae34b23e773, type: 3}
+  m_StopSprite: {fileID: 21300000, guid: a843fc2677cc0fa4ca4a3287e67fc43a, type: 3}
   m_SpeedText: {fileID: 114311312010859480}
   m_AngularSpeedText: {fileID: 114839088064853406}
   m_TargetSpeedText: {fileID: 114925961690165442}

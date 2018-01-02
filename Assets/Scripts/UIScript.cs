@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour {
 
+    [SerializeField] private Sprite m_RecordSprite;
+    [SerializeField] private Sprite m_StopSprite;
+
     [SerializeField] private Text m_SpeedText;
     [SerializeField] private Text m_AngularSpeedText;
     [SerializeField] private Text m_TargetSpeedText;
@@ -14,6 +17,7 @@ public class UIScript : MonoBehaviour {
     private RecordScript m_Record;
     private CarController m_Car;
     private PidController m_Pid;
+    private Image m_RecordImage;
 
     private string m_BaseSpeed;
     private string m_BaseAngularSpeed;
@@ -26,6 +30,7 @@ public class UIScript : MonoBehaviour {
         m_Record = lazik.GetComponent<RecordScript>();
         m_Car = lazik.GetComponent<CarController>();
         m_Pid = lazik.GetComponent<PidController>();
+        m_RecordImage = GameObject.Find("RecordButton").GetComponent<Image>();
     }
 
     private void Start()
@@ -38,10 +43,17 @@ public class UIScript : MonoBehaviour {
 
     public void ToggleRecord()
     {
-        if( !m_Record.IsRecording )
+        if (!m_Record.IsRecording)
+        {
             m_Record.IsRecording = true;
+            if (m_Record.IsRecording)
+                m_RecordImage.sprite = m_StopSprite;
+        }
         else
+        {
             m_Record.IsRecording = false;
+            m_RecordImage.sprite = m_RecordSprite;
+        }
     }
 
     // Update is called once per frame
