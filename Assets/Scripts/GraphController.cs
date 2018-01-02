@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(PidController))]
 public class GraphController : MonoBehaviour
 {
-	private bool isOn = false;
+	private bool m_IsOn = false;
 
 	private CarController m_Car;
 	private PidController m_Pid;
@@ -23,16 +23,16 @@ public class GraphController : MonoBehaviour
 	void Update()
 	{
 		if (Input.GetKeyDown (KeyCode.Space) ) {
-			if (isOn) {
-				isOn = false;
+			if (m_IsOn) {
+				m_IsOn = false;
 				m_Graph.stopGraph ();
 			} else {
-				isOn = true;
+				m_IsOn = true;
 				m_Graph.startGraph ();
 			}
 		}
 
-		if (isOn) {
+		if (m_IsOn) {
 			Rect ForwardSpeedRect = new Rect (0f, 0f, 
 				(2f / 6f) * Screen.width, .2f * Screen.height);
 			Rect AccelRect = new Rect ((2f / 6f) * Screen.width, 0f, 

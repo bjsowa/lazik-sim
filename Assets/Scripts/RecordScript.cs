@@ -7,57 +7,58 @@ using SimpleFileBrowser;
 
 public class RecordScript : MonoBehaviour {
 
-	public const string CSVFileName = "driving_log.csv";
-	public const string DirFrames = "IMG";
+    [SerializeField] private Camera m_CenterCamera = new Camera();
+
+    private const string m_CSVFileName = "driving_log.csv";
+	private const string m_DirFrames = "IMG";
 
 	private Rigidbody m_Rigidbody;
 	private CarController m_Car;
-	private PidController m_Controller;
+	private PidController m_Pid;
 
 	private string m_SaveLocation = "";
-	private Queue<CarSample> carSamples;
-	private int TotalSamples;
-	private bool isSaving;
-	private Vector3 saved_position;
-	private Quaternion saved_rotation;
-	private bool m_isRecording = false;
+	private Queue<CarSample> m_CarSamples;
+	private Vector3 m_SavedPosition;
+	private Quaternion m_SavedRotation;
+	private bool m_IsRecording = false;
 
-	[SerializeField] private Camera CenterCamera = new Camera();
+    public int totalSamples { get; private set; }
+    public bool isSaving { get; private set; }
 
-	private void Awake() {
+    private void Awake() {
 		m_Rigidbody = GetComponent<Rigidbody> ();
 		m_Car = GetComponent<CarController> ();
-		m_Controller = GetComponent<PidController> ();
+		m_Pid = GetComponent<PidController> ();
 	}
 
 	public bool IsRecording {
 		get {
-			return m_isRecording;
+			return m_IsRecording;
 		}
 		set {
-            if (m_isRecording != value)
+            if (m_IsRecording != value)
             {
                 if (value == true)
                 {
                     if (checkSaveLocation())
                     {
-                        m_isRecording = true;
+                        m_IsRecording = true;
                         Debug.Log("Starting to record");
-                        carSamples = new Queue<CarSample>();
+                        m_CarSamples = new Queue<CarSample>();
                         StartCoroutine(Sample());
                     }
                 }
                 else
                 {
-                    m_isRecording = false;
+                    m_IsRecording = false;
                     Debug.Log("Stopping record");
                     StopCoroutine(Sample());
                     Debug.Log("Writing to disk");
                     //save the cars coordinate parameters so we can reset it to this properly after capturing data
-                    saved_position = transform.position;
-                    saved_rotation = transform.rotation;
+                    m_SavedPosition = transform.position;
+                    m_SavedRotation = transform.rotation;
                     //see how many samples we captured use this to show save percentage in UISystem script
-                    TotalSamples = carSamples.Count;
+                    totalSamples = m_CarSamples.Count;
                     isSaving = true;
                     StartCoroutine(WriteSamplesToDisk());
                 }
@@ -78,7 +79,7 @@ public class RecordScript : MonoBehaviour {
 	private void OpenFolder(string location)
 	{
 		m_SaveLocation = location;
-		Directory.CreateDirectory (Path.Combine(m_SaveLocation, DirFrames));
+		Directory.CreateDirectory (Path.Combine(m_SaveLocation, m_DirFrames));
 	}
 
 	//Changed the WriteSamplesToDisk to a IEnumerator method that plays back recording along with percent status from UISystem script 
@@ -86,23 +87,23 @@ public class RecordScript : MonoBehaviour {
 	public IEnumerator WriteSamplesToDisk()
 	{
 		yield return new WaitForSeconds(0.000f); //retrieve as fast as we can but still allow communication of main thread to screen and UISystem
-		if (carSamples.Count > 0) {
+		if (m_CarSamples.Count > 0) {
 			//pull off a sample from the que
-			CarSample sample = carSamples.Dequeue();
+			CarSample sample = m_CarSamples.Dequeue();
 
 			//pysically moving the car to get the right camera position
 			transform.position = sample.position;
 			transform.rotation = sample.rotation;
 
 			// Capture and Persist Image
-			string centerPath = WriteImage (CenterCamera, "center", sample.timeStamp);
+			string centerPath = WriteImage (m_CenterCamera, "center", sample.timeStamp);
 			//string leftPath = WriteImage (LeftCamera, "left", sample.timeStamp);
 			//string rightPath = WriteImage (RightCamera, "right", sample.timeStamp);
 
 			string row = string.Format ("{0},{1},{2},{3},{4}\n", centerPath, sample.accel, sample.steering, sample.speed, sample.angularSpeed);
-			File.AppendAllText (Path.Combine (m_SaveLocation, CSVFileName), row);
+			File.AppendAllText (Path.Combine (m_SaveLocation, m_CSVFileName), row);
 		}
-		if (carSamples.Count > 0) {
+		if (m_CarSamples.Count > 0) {
 			//request if there are more samples to pull
 			StartCoroutine(WriteSamplesToDisk()); 
 		}
@@ -113,8 +114,8 @@ public class RecordScript : MonoBehaviour {
 			isSaving = false;
 
 			//need to reset the car back to its position before ending recording, otherwise sometimes the car ended up in strange areas
-			transform.position = saved_position;
-			transform.rotation = saved_rotation;
+			transform.position = m_SavedPosition;
+			transform.rotation = m_SavedRotation;
 			m_Rigidbody.velocity = new Vector3(0f,-10f,0f);
 			//Move(0f, 0f, 0f, 0f);
 
@@ -123,7 +124,7 @@ public class RecordScript : MonoBehaviour {
 
 	public float getSavePercent()
 	{
-		return (float)(TotalSamples-carSamples.Count)/TotalSamples;
+		return (float)(totalSamples-m_CarSamples.Count)/totalSamples;
 	}
 
 	public bool getSaveStatus()
@@ -143,14 +144,14 @@ public class RecordScript : MonoBehaviour {
 			CarSample sample = new CarSample();
 
 			sample.timeStamp = System.DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff");
-			sample.accel = m_Controller.accel;
-			sample.steering = m_Controller.steering;
+			sample.accel = m_Pid.accel;
+			sample.steering = m_Pid.steering;
 			sample.speed = m_Car.speed;
 			sample.angularSpeed = m_Car.angularSpeed;
 			sample.position = transform.position;
 			sample.rotation = transform.rotation;
 
-			carSamples.Enqueue(sample);
+			m_CarSamples.Enqueue(sample);
 
 			sample = null;
 			//may or may not be needed
@@ -174,7 +175,7 @@ public class RecordScript : MonoBehaviour {
 		texture2D.Apply ();
 		byte[] image = texture2D.EncodeToJPG ();
 		UnityEngine.Object.DestroyImmediate (texture2D);
-		string directory = Path.Combine(m_SaveLocation, DirFrames);
+		string directory = Path.Combine(m_SaveLocation, m_DirFrames);
 		string path = Path.Combine(directory, prepend + "_" + timestamp + ".jpg");
 		File.WriteAllBytes (path, image);
 		image = null;

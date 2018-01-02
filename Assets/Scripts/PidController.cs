@@ -18,11 +18,11 @@ public class PidController : MonoBehaviour
 	[SerializeField] private float m_DAngular = 1f;
 	[SerializeField] private float m_AngularSpeedThreshold = 1f;
 
-	private float previousForwardError = 0f;
-	private float currentForwardError = 0f;
+	private float m_PreviousForwardError = 0f;
+	private float m_CurrentForwardError = 0f;
 
-	private float previousAngularError = 0f;
-	private float currentAngularError = 0f;
+	private float m_PreviousAngularError = 0f;
+	private float m_CurrentAngularError = 0f;
 
 	[HideInInspector] public float accelProportional = 0f;
 	[HideInInspector] public float accelIntegral = 0f;
@@ -57,11 +57,11 @@ public class PidController : MonoBehaviour
 		}
 			
 		targetSpeed = accel * m_TopForwardSpeed;
-		currentForwardError = targetSpeed - carForwardSpeed;
+		m_CurrentForwardError = targetSpeed - carForwardSpeed;
 
-		accelProportional = m_PForward * currentForwardError / m_TopForwardSpeed;
-		accelIntegral += (m_IForward * (currentForwardError + previousForwardError) / 2f * Time.deltaTime) / m_TopForwardSpeed;
-		accelDerivative = (m_DForward * (currentForwardError - previousForwardError) / Time.deltaTime) / m_TopForwardSpeed;
+		accelProportional = m_PForward * m_CurrentForwardError / m_TopForwardSpeed;
+		accelIntegral += (m_IForward * (m_CurrentForwardError + m_PreviousForwardError) / 2f * Time.deltaTime) / m_TopForwardSpeed;
+		accelDerivative = (m_DForward * (m_CurrentForwardError - m_PreviousForwardError) / Time.deltaTime) / m_TopForwardSpeed;
 
 		accelIntegral = Mathf.Clamp (accelIntegral, -1, 1);
 
@@ -75,11 +75,11 @@ public class PidController : MonoBehaviour
 		}
 
 		targetAngularSpeed = steering * m_TopAngularSpeed;
-		currentAngularError = targetAngularSpeed - carAngularSpeed;
+		m_CurrentAngularError = targetAngularSpeed - carAngularSpeed;
 
-		steeringProportional = m_PAngular * currentAngularError / m_TopAngularSpeed;
-		steeringIntegral += (m_IAngular * (currentAngularError + previousAngularError) / 2f * Time.deltaTime) / m_TopAngularSpeed;
-		steeringDerivative = (m_DAngular * (currentAngularError - previousAngularError) / Time.deltaTime) / m_TopAngularSpeed;
+		steeringProportional = m_PAngular * m_CurrentAngularError / m_TopAngularSpeed;
+		steeringIntegral += (m_IAngular * (m_CurrentAngularError + m_PreviousAngularError) / 2f * Time.deltaTime) / m_TopAngularSpeed;
+		steeringDerivative = (m_DAngular * (m_CurrentAngularError - m_PreviousAngularError) / Time.deltaTime) / m_TopAngularSpeed;
 
 		steeringIntegral = Mathf.Clamp (steeringIntegral, -1, 1);
 
@@ -91,7 +91,7 @@ public class PidController : MonoBehaviour
 
 		m_Car.Move (accelResult, steeringResult);
 
-		previousForwardError = currentForwardError;
-		previousAngularError = currentAngularError;
+		m_PreviousForwardError = m_CurrentForwardError;
+		m_PreviousAngularError = m_CurrentAngularError;
 	}
 }
