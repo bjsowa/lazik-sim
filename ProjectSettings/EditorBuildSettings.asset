@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/_Scenes/Menu.unity
     guid: 5aff89d62a16f1947b968905150da07d
   - enabled: 1
-    path: Assets/_Scenes/TrackTraining.unity
-    guid: 41b8fdb98491fab48a0cd641d4c0e3b1
+    path: Assets/_Scenes/TestTraining.unity
+    guid: 4ab0c28b60fdfde43abc18399bc8324d
   - enabled: 1
-    path: Assets/_Scenes/TrackAutonomous.unity
-    guid: 45465c9952fb47049bd40aad28cc30ca
+    path: Assets/_Scenes/TestAutonomous.unity
+    guid: beb2a9da52899d04dbb06ab894308586
