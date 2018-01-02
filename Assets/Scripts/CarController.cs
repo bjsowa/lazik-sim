@@ -62,7 +62,7 @@ public class CarController : MonoBehaviour
 		float zSpeed = m_Rigidbody.velocity.z * transform.forward.z;
 		speed = (xSpeed + ySpeed + zSpeed) * 3.6f;
 
-		angularSpeed = m_Rigidbody.angularVelocity.y;
+		angularSpeed = (m_Rigidbody.angularVelocity.y / (2f * Mathf.PI)) * 60f;
 	}
 
 

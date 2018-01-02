@@ -2066,6 +2066,16 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_TopAngularSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
+        type: 2}
+      propertyPath: m_AngularSpeedThreshold
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f99651d89ac6e8645a9928a620799386, type: 2}
   m_IsPrefabParent: 0

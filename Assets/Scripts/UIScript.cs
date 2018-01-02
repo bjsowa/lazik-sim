@@ -53,8 +53,8 @@ public class UIScript : MonoBehaviour {
             ToggleRecord();
 
         m_SpeedText.text = m_BaseSpeed + m_Car.speed.ToString("0.00") + " km/h";
-        m_AngularSpeedText.text = m_BaseAngularSpeed + m_Car.angularSpeed.ToString("0.00");
+        m_AngularSpeedText.text = m_BaseAngularSpeed + m_Car.angularSpeed.ToString("0.00") + " RPM";
         m_TargetSpeedText.text = m_BaseTargetSpeed + m_Pid.targetSpeed.ToString("0.00") + " km/h";
-        m_TargetAngularSpeedText.text = m_BaseTargetAngularSpeed + m_Pid.targetAngularSpeed.ToString("0.00");
+        m_TargetAngularSpeedText.text = m_BaseTargetAngularSpeed + m_Pid.targetAngularSpeed.ToString("0.00") + " RPM";
     }
 }
