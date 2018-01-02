@@ -5,6 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using SimpleFileBrowser;
 
+[Serializable]
+public class MyCamera
+{
+    public string name;
+    public Camera camera;
+}
+
 internal class CarSample
 {
     public Quaternion rotation;
@@ -18,7 +25,8 @@ internal class CarSample
 
 public class RecordScript : MonoBehaviour {
 
-    [SerializeField] private Camera m_CenterCamera = new Camera();
+    //[SerializeField] private Camera m_CenterCamera = new Camera();
+    [SerializeField] private MyCamera[] m_Cameras;
 
     private const string m_CSVFileName = "driving_log.csv";
 	private const string m_DirFrames = "IMG";
@@ -113,12 +121,12 @@ public class RecordScript : MonoBehaviour {
 			transform.position = sample.position;
 			transform.rotation = sample.rotation;
 
-			// Capture and Persist Image
-			string centerPath = WriteImage (m_CenterCamera, "center", sample.timeStamp);
-			//string leftPath = WriteImage (LeftCamera, "left", sample.timeStamp);
-			//string rightPath = WriteImage (RightCamera, "right", sample.timeStamp);
+            // Capture and Persist Image
+            string paths = "";
+            foreach (MyCamera cam in m_Cameras)
+                paths += WriteImage(cam.camera, cam.name, sample.timeStamp) + ",";
 
-			string row = string.Format ("{0},{1},{2},{3},{4}\n", centerPath, sample.accel, sample.steering, sample.speed, sample.angularSpeed);
+			string row = string.Format ("{0}{1},{2},{3},{4}\n", paths, sample.accel, sample.steering, sample.speed, sample.angularSpeed);
 			File.AppendAllText (Path.Combine (m_SaveLocation, m_CSVFileName), row);
 		}
 		if (m_CarSamples.Count > 0) {
