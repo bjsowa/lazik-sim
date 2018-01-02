@@ -5,6 +5,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using SimpleFileBrowser;
 
+internal class CarSample
+{
+    public Quaternion rotation;
+    public Vector3 position;
+    public float accel;
+    public float steering;
+    public float speed;
+    public float angularSpeed;
+    public string timeStamp;
+}
+
 public class RecordScript : MonoBehaviour {
 
     [SerializeField] private Camera m_CenterCamera = new Camera();
@@ -22,16 +33,23 @@ public class RecordScript : MonoBehaviour {
 	private Quaternion m_SavedRotation;
 	private bool m_IsRecording = false;
 
+    private void Awake()
+    {
+        m_Rigidbody = GetComponent<Rigidbody>();
+        m_Car = GetComponent<CarController>();
+        m_Pid = GetComponent<PidController>();
+    }
+
     public int totalSamples { get; private set; }
     public bool isSaving { get; private set; }
 
-    private void Awake() {
-		m_Rigidbody = GetComponent<Rigidbody> ();
-		m_Car = GetComponent<CarController> ();
-		m_Pid = GetComponent<PidController> ();
-	}
+    public float getSavePercent()
+    {
+        float part = (float)(totalSamples - m_CarSamples.Count) / totalSamples;
+        return (float)Math.Round(100f * part);
+    }
 
-	public bool IsRecording {
+    public bool isRecording {
 		get {
 			return m_IsRecording;
 		}
@@ -66,7 +84,7 @@ public class RecordScript : MonoBehaviour {
 		}
 	}
 		
-	public bool checkSaveLocation()
+	private bool checkSaveLocation()
 	{
 		if (m_SaveLocation != "") {
 			return true;
@@ -84,7 +102,7 @@ public class RecordScript : MonoBehaviour {
 
 	//Changed the WriteSamplesToDisk to a IEnumerator method that plays back recording along with percent status from UISystem script 
 	//instead of showing frozen screen until all data is recorded
-	public IEnumerator WriteSamplesToDisk()
+	private IEnumerator WriteSamplesToDisk()
 	{
 		yield return new WaitForSeconds(0.000f); //retrieve as fast as we can but still allow communication of main thread to screen and UISystem
 		if (m_CarSamples.Count > 0) {
@@ -122,18 +140,7 @@ public class RecordScript : MonoBehaviour {
 		}
 	}
 
-	public float getSavePercent()
-	{
-		return (float)(totalSamples-m_CarSamples.Count)/totalSamples;
-	}
-
-	public bool getSaveStatus()
-	{
-		return isSaving;
-	}
-
-
-	public IEnumerator Sample()
+	private IEnumerator Sample()
 	{
 		// Start the Coroutine to Capture Data Every Second.
 		// Persist that Information to a CSV and Perist the Camera Frame
@@ -158,7 +165,7 @@ public class RecordScript : MonoBehaviour {
 		}
 
 		// Only reschedule if the button hasn't toggled
-		if (IsRecording){
+		if (isRecording){
 			StartCoroutine(Sample());
 		}
 
@@ -181,15 +188,4 @@ public class RecordScript : MonoBehaviour {
 		image = null;
 		return path;
 	}
-}
-
-internal class CarSample
-{
-	public Quaternion rotation;
-	public Vector3 position;
-	public float accel;
-	public float steering;
-	public float speed;
-	public float angularSpeed;
-	public string timeStamp;
 }

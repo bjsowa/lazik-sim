@@ -13,6 +13,7 @@ public class UIScript : MonoBehaviour {
     [SerializeField] private Text m_AngularSpeedText;
     [SerializeField] private Text m_TargetSpeedText;
     [SerializeField] private Text m_TargetAngularSpeedText;
+    [SerializeField] private Text m_CollectingDataText;
 
     private RecordScript m_Record;
     private CarController m_Car;
@@ -23,6 +24,7 @@ public class UIScript : MonoBehaviour {
     private string m_BaseAngularSpeed;
     private string m_BaseTargetSpeed;
     private string m_BaseTargetAngularSpeed;
+    private string m_BaseCollectingData;
 
     private void Awake()
     {
@@ -39,19 +41,23 @@ public class UIScript : MonoBehaviour {
         m_BaseAngularSpeed = m_AngularSpeedText.text;
         m_BaseTargetSpeed = m_TargetSpeedText.text;
         m_BaseTargetAngularSpeed = m_TargetAngularSpeedText.text;
+        m_BaseCollectingData = m_CollectingDataText.text;
     }
 
     public void ToggleRecord()
     {
-        if (!m_Record.IsRecording)
+        if (m_Record.isSaving)
+            return;
+
+        if (!m_Record.isRecording)
         {
-            m_Record.IsRecording = true;
-            if (m_Record.IsRecording)
+            m_Record.isRecording = true;
+            if (m_Record.isRecording)
                 m_RecordImage.sprite = m_StopSprite;
         }
         else
         {
-            m_Record.IsRecording = false;
+            m_Record.isRecording = false;
             m_RecordImage.sprite = m_RecordSprite;
         }
     }
@@ -68,5 +74,10 @@ public class UIScript : MonoBehaviour {
         m_AngularSpeedText.text = m_BaseAngularSpeed + m_Car.angularSpeed.ToString("0.00") + " RPM";
         m_TargetSpeedText.text = m_BaseTargetSpeed + m_Pid.targetSpeed.ToString("0.00") + " km/h";
         m_TargetAngularSpeedText.text = m_BaseTargetAngularSpeed + m_Pid.targetAngularSpeed.ToString("0.00") + " RPM";
+
+        if (m_Record.isSaving)
+            m_CollectingDataText.text = m_BaseCollectingData + m_Record.getSavePercent().ToString() + " %";
+        else
+            m_CollectingDataText.text = "";
     }
 }
