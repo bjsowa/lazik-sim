@@ -15,6 +15,11 @@ public class UIScript : MonoBehaviour {
     private CarController m_Car;
     private PidController m_Pid;
 
+    private string m_BaseSpeed;
+    private string m_BaseAngularSpeed;
+    private string m_BaseTargetSpeed;
+    private string m_BaseTargetAngularSpeed;
+
     private void Awake()
     {
         GameObject lazik = GameObject.FindWithTag("Player");
@@ -25,7 +30,10 @@ public class UIScript : MonoBehaviour {
 
     private void Start()
     {
-
+        m_BaseSpeed = m_SpeedText.text;
+        m_BaseAngularSpeed = m_AngularSpeedText.text;
+        m_BaseTargetSpeed = m_TargetSpeedText.text;
+        m_BaseTargetAngularSpeed = m_TargetAngularSpeedText.text;
     }
 
     public void ToggleRecord()
@@ -44,9 +52,9 @@ public class UIScript : MonoBehaviour {
         if (Input.GetButtonDown("Record"))
             ToggleRecord();
 
-        m_SpeedText.text = m_Car.speed.ToString();
-        m_AngularSpeedText.text = m_Car.angularSpeed.ToString();
-        m_TargetSpeedText.text = m_Pid.targetSpeed.ToString();
-        m_TargetAngularSpeedText.text = m_Pid.targetAngularSpeed.ToString();
+        m_SpeedText.text = m_BaseSpeed + m_Car.speed.ToString("0.00") + " km/h";
+        m_AngularSpeedText.text = m_BaseAngularSpeed + m_Car.angularSpeed.ToString("0.00");
+        m_TargetSpeedText.text = m_BaseTargetSpeed + m_Pid.targetSpeed.ToString("0.00") + " km/h";
+        m_TargetAngularSpeedText.text = m_BaseTargetAngularSpeed + m_Pid.targetAngularSpeed.ToString("0.00");
     }
 }
