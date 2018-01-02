@@ -65,7 +65,7 @@ public class GraphController : MonoBehaviour
 				GraphManager.Graph.Plot ("AccelIntegralGraph", m_Pid.accelIntegral, Color.red, AccelIntegralRect);
 				GraphManager.Graph.Plot ("AccelDerivativeGraph", m_Pid.accelDerivative, Color.red, AccelDerivativeRect);
 
-				GraphManager.Graph.Plot ("AngularSpeedGraph", m_Car.angularSpeed, Color.green, AngularSpeedRect, -1f, 1f);
+				GraphManager.Graph.Plot ("AngularSpeedGraph", m_Car.angularSpeed, Color.green, AngularSpeedRect, -15f, 15f);
 				GraphManager.Graph.Plot ("SteeringGraph", m_Pid.steeringResult, Color.red, SteeringRect, -1f, 1f);
 				GraphManager.Graph.Plot ("SteeringProportionalGraph", m_Pid.steeringProportional, Color.red, SteeringProportionalRect);
 				GraphManager.Graph.Plot ("SteeringIntegralGraph", m_Pid.steeringIntegral, Color.red, SteeringIntegralRect);
