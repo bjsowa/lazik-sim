@@ -5,22 +5,22 @@ using SocketIO;
 
 public class CommandServer : MonoBehaviour {
 
-	private SocketIOComponent _socket;
-	private PidController _controller;
+	private SocketIOComponent m_Socket;
+	private PidController m_Controller;
 
 	// Use this for initialization
 	void Start () {
-		_controller = GameObject.Find ("łazik").GetComponent<PidController> ();
+		m_Controller = GameObject.FindWithTag ("Player").GetComponent<PidController> ();
 
-		_socket = GameObject.Find("SocketIO").GetComponent<SocketIOComponent>();
-		_socket.On("open", OnOpen);
-		_socket.On("steer", OnSteer);
+		m_Socket = GameObject.Find("SocketIO").GetComponent<SocketIOComponent>();
+		m_Socket.On("open", OnOpen);
+		m_Socket.On("steer", OnSteer);
 	}
 	
 	void OnOpen(SocketIOEvent obj)
 	{
 		Debug.Log("Connection Open");
-		_socket.Emit ("test");
+		m_Socket.Emit ("test");
 	}
 
 	void OnSteer(SocketIOEvent obj)
@@ -29,6 +29,6 @@ public class CommandServer : MonoBehaviour {
 		//    print(float.Parse(jsonObject.GetField("steering_angle").str));
 		float accel = float.Parse(jsonObject.GetField("accel").str);
 		float steering = float.Parse(jsonObject.GetField("steering").str);
-		_controller.Move (accel, steering);
+		m_Controller.Move (accel, steering);
 	}
 }
