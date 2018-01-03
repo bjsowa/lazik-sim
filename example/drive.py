@@ -1,11 +1,15 @@
 import os
+import base64
 
 import socketio
 import eventlet
 import eventlet.wsgi
 
-from flask import Flask
+import numpy as np
 
+from flask import Flask
+from io import BytesIO
+from PIL import Image
 
 sio = socketio.Server()
 app = Flask(__name__)
@@ -14,6 +18,16 @@ app = Flask(__name__)
 def connect(sid, environ):
     print("connect ", sid)
     send_control(1.0, 0.15)
+
+@sio.on('telemetry')
+def telemetry(sid, data):
+    if data:
+        speed = data["speed"]
+        angularSpeed = data["angularSpeed"]
+        imgStr = data["image"]
+        image = Image.open(BytesIO(base64.b64decode(imgStr)))
+        image_array = np.asarray(image)
+        print( speed, angularSpeed, image_array.shape )
 
 def send_control(accel, steering):
     sio.emit(
@@ -24,7 +38,6 @@ def send_control(accel, steering):
         },
         skip_sid=True)
     
-
 
 if __name__ == '__main__':
 

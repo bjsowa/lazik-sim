@@ -61,7 +61,6 @@ public class CommandServer : MonoBehaviour {
             data["angularSpeed"] = m_Car.angularSpeed.ToString("N4");
             data["image"] = Convert.ToBase64String(CaptureFrame(m_FrontCamera));
             m_Socket.Emit("telemetry", new JSONObject(data));
-            Debug.Log("telemetry");
         }
     }
 }
