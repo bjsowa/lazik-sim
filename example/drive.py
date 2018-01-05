@@ -6,6 +6,9 @@ import eventlet
 import eventlet.wsgi
 
 import numpy as np
+import matplotlib.pyplot as plt
+
+from random import uniform
 
 from flask import Flask
 from io import BytesIO
@@ -17,7 +20,10 @@ app = Flask(__name__)
 @sio.on('connect')
 def connect(sid, environ):
     print("connect ", sid)
-    send_control(1.0, 0.15)
+
+@sio.on('disconnect')
+def disconnect(sid):
+    print('disconnect ', sid)
 
 @sio.on('telemetry')
 def telemetry(sid, data):
@@ -27,7 +33,14 @@ def telemetry(sid, data):
         imgStr = data["image"]
         image = Image.open(BytesIO(base64.b64decode(imgStr)))
         image_array = np.asarray(image)
-        print( speed, angularSpeed, image_array.shape )
+
+        print( speed, angularSpeed )
+        plt.imshow(image_array)
+        plt.show()
+
+        send_control(uniform(-1,1), uniform(-1,1))
+        sio.emit("request_telemetry", data = {})
+
 
 def send_control(accel, steering):
     sio.emit(
@@ -35,8 +48,7 @@ def send_control(accel, steering):
         data={
             'accel': str(accel),
             'steering': str(steering)
-        },
-        skip_sid=True)
+        })
     
 
 if __name__ == '__main__':

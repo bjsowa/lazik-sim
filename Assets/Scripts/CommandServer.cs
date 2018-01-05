@@ -9,6 +9,7 @@ public class CommandServer : MonoBehaviour {
 
 	private SocketIOComponent m_Socket;
     private bool m_IsOpen = false;
+    private bool m_Request = true;
     private CarController m_Car;
 	private PidController m_Pid;
 
@@ -23,6 +24,7 @@ public class CommandServer : MonoBehaviour {
     void Start () {
 		m_Socket.On("open", OnOpen);
 		m_Socket.On("steer", OnSteer);
+        m_Socket.On("request_telemetry", OnRequest);
 	}
 	
 	void OnOpen(SocketIOEvent obj)
@@ -40,6 +42,12 @@ public class CommandServer : MonoBehaviour {
 		m_Pid.Move (accel, steering);
 	}
 
+    void OnRequest(SocketIOEvent obj)
+    {
+        //Debug.Log("Requested Telemetry");
+        m_Request = true;
+    }
+
     public byte[] CaptureFrame(Camera camera)
     {
         RenderTexture targetTexture = camera.targetTexture;
@@ -52,15 +60,21 @@ public class CommandServer : MonoBehaviour {
         return image;
     }
 
+    private void EmitTelemetry()
+    {
+        Dictionary<string, string> data = new Dictionary<string, string>();
+        data["speed"] = m_Car.speed.ToString("N4");
+        data["angularSpeed"] = m_Car.angularSpeed.ToString("N4");
+        data["image"] = Convert.ToBase64String(CaptureFrame(m_FrontCamera));
+        m_Socket.Emit("telemetry", new JSONObject(data));
+    }
+
     private void Update()
     {
-        if (m_IsOpen)
+        if (m_IsOpen && m_Request)
         {
-            Dictionary<string, string> data = new Dictionary<string, string>();
-            data["speed"] = m_Car.speed.ToString("N4");
-            data["angularSpeed"] = m_Car.angularSpeed.ToString("N4");
-            data["image"] = Convert.ToBase64String(CaptureFrame(m_FrontCamera));
-            m_Socket.Emit("telemetry", new JSONObject(data));
+            EmitTelemetry();
+            m_Request = false;
         }
     }
 }
