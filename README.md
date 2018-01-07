@@ -13,7 +13,7 @@ Wersje aplikacji zbudowane na systemy Windows, Linux i Mac dostępne w zakładce
 
 Po uruchomieniu pliku wykonywalnego, powinno pojawić się okno z konfiguracją.
 
-![graphic](pictures\player_graphics.png)
+![graphic](pictures/player_graphics.png)
 
 "Graphics quality" radzę ustawić, tak żeby aplikacja działała płynnie i nie zmieniać jej już później, gdyż może ona wpłynąć na wygląd nagrywanych przejazdów. Rozdzielczość nie powinna mieć wpływu na nagrane przejazdy.
 
