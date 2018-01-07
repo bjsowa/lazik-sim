@@ -13,7 +13,7 @@ Wersje aplikacji zbudowane na systemy Windows, Linux i Mac dostępne w zakładce
 
 Po uruchomieniu pliku wykonywalnego, powinno pojawić się okno z konfiguracją.
 
-![graphic](pictures\player_graphics.png)
+![graphic](pictures/player_graphics.png)
 
 "Graphics quality" radzę ustawić, tak żeby aplikacja działała płynnie i nie zmieniać jej już później, gdyż może ona wpłynąć na wygląd nagrywanych przejazdów. Rozdzielczość nie powinna mieć wpływu na nagrane przejazdy.
 
@@ -60,4 +60,22 @@ Znaczenie powyższych pól:
 * steering - wartość z przedziału [-1,1] oznaczająca prędkość obrotową zadaną przez użytkownika (wartość `Horizontal`). ("Top Angular Speed" ustawione jest na 15 RPM)
 * speed - Aktualna prędkość łazika wyrażona w km/h
 * angularSpeed - Aktualna prędkość obrotowa łazika wyrażona w RPM
+
+## Tryb Autonomous
+
+W tym trybie wyłączone jest sterowanie manualne. Jest ono natomiast przekazywane przez protokół Socket.IO. Przykład użycia można znaleźć w folderze `example`.
+
+### Przykładowy program
+
+Wymagania:
+
+* `Python` (testowano na wersji 3.6.4)
+* pakiety z pliku `requirements.txt`. Można je zainstalować poleceniem `pip install -r requirements.txt` (polecam stworzyć do tego oddzielne środowisko pythonowe programem `virtualenv`, żeby nie zaśmiecać systemu)
+
+Uruchamianie:
+
+1. Uruchom symulator (najlepiej w trybie `Windowed`, żeby widzieć łazik na żywo).
+2. Wybierz tryb `Autonomous`
+2. Uruchom z terminala skrypt `drive.py`
+
 
