@@ -79,3 +79,13 @@ Uruchamianie:
 2. Uruchom z terminala skrypt `drive.py`
 
 
+Działanie:
+
+* symulator otwiera socket na porcie 4567
+* skrypt łączy się przez ten socket
+* symulator po otwarciu połączenia, wysyła Event `telemetry`, zawierający dane o aktualnej prędkości łazika oraz obraz z przedniej kamery
+* skrypt odbiera event, konwertuje otrzymany obraz do postaci tablicy RGB i pokazuje plot tego obrazka
+* gdy użytkownik zamknie plot, skrypt wysyła Event `steer` z losowymi wartościami `accel` i `steering`
+* symulator odbiera dane sterowania i przekazuje je do kontrolera łazika
+* skrypt wysyła Event `request_telemetry`
+* symulator odbiera event i wysyła `telemetry` przy następne klatce
