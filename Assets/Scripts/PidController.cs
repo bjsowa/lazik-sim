@@ -6,12 +6,15 @@ using UnityEngine;
 public class PidController : MonoBehaviour 
 {
 	private CarController m_Car;
+
+    [Header("Forward Speed PID")]
 	[SerializeField] private float m_TopForwardSpeed = 30f;
 	[SerializeField] private float m_PForward = 1f;
 	[SerializeField] private float m_IForward = 1f;
 	[SerializeField] private float m_DForward = 1f;
 	[SerializeField] private float m_ForwardSpeedThreshold = 1f;
 
+    [Header("Angular Speed PID")]
 	[SerializeField] private float m_TopAngularSpeed = 30f;
 	[SerializeField] private float m_PAngular = 1f;
 	[SerializeField] private float m_IAngular = 1f;
