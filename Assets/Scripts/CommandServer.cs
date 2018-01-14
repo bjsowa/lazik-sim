@@ -12,12 +12,14 @@ public class CommandServer : MonoBehaviour {
     private bool m_Request = true;
     private CarController m_Car;
 	private PidController m_Pid;
+    private CarUserControl m_Control;
 
     private void Awake()
     {
         GameObject lazik = GameObject.FindWithTag("Player");
         m_Car = lazik.GetComponent<CarController>();
         m_Pid = lazik.GetComponent<PidController>();
+        m_Control = lazik.GetComponent<CarUserControl>();
         m_Socket = GameObject.Find("SocketIO").GetComponent<SocketIOComponent>();
     }
 
@@ -35,11 +37,14 @@ public class CommandServer : MonoBehaviour {
 
 	void OnSteer(SocketIOEvent obj)
 	{
-		JSONObject jsonObject = obj.data;
+        if (m_Control.currentMode == CarUserControl.Mode.Autonomous)
+        {
+            JSONObject jsonObject = obj.data;
 
-		float accel = float.Parse(jsonObject.GetField("accel").str);
-		float steering = float.Parse(jsonObject.GetField("steering").str);
-		m_Pid.Move (accel, steering);
+            float accel = float.Parse(jsonObject.GetField("accel").str);
+            float steering = float.Parse(jsonObject.GetField("steering").str);
+            m_Pid.Move(accel, steering);
+        }
 	}
 
     void OnRequest(SocketIOEvent obj)
