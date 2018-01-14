@@ -21,6 +21,7 @@ internal class CarSample
     public float speed;
     public float angularSpeed;
     public string timeStamp;
+    public char mode;
 }
 
 public class RecordScript : MonoBehaviour {
@@ -34,6 +35,7 @@ public class RecordScript : MonoBehaviour {
 	private Rigidbody m_Rigidbody;
 	private CarController m_Car;
 	private PidController m_Pid;
+    private CarUserControl m_Control;
 
 	private string m_SaveLocation = "";
 	private Queue<CarSample> m_CarSamples;
@@ -46,6 +48,7 @@ public class RecordScript : MonoBehaviour {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Car = GetComponent<CarController>();
         m_Pid = GetComponent<PidController>();
+        m_Control = GetComponent<CarUserControl>();
     }
 
     public int totalSamples { get; private set; }
@@ -126,7 +129,8 @@ public class RecordScript : MonoBehaviour {
             foreach (MyCamera cam in m_Cameras)
                 paths += WriteImage(cam.camera, cam.name, sample.timeStamp) + ",";
 
-			string row = string.Format ("{0}{1},{2},{3},{4}\n", paths, sample.accel, sample.steering, sample.speed, sample.angularSpeed);
+			string row = string.Format ("{0}{1},{2},{3},{4},{5}\n", 
+                paths, sample.accel, sample.steering, sample.speed, sample.angularSpeed, sample.mode);
 			File.AppendAllText (Path.Combine (m_SaveLocation, m_CSVFileName), row);
 		}
 		if (m_CarSamples.Count > 0) {
@@ -159,6 +163,7 @@ public class RecordScript : MonoBehaviour {
 			CarSample sample = new CarSample();
 
 			sample.timeStamp = System.DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff");
+            sample.mode = m_Control.currentMode == CarUserControl.Mode.Autonomous ? 'A' : 'M';
 			sample.accel = m_Pid.accel;
 			sample.steering = m_Pid.steering;
 			sample.speed = m_Car.speed;
