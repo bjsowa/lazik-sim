@@ -60,10 +60,11 @@ Znaczenie powyższych pól:
 * steering - wartość z przedziału [-1,1] oznaczająca prędkość obrotową zadaną przez użytkownika (wartość `Horizontal`). ("Top Angular Speed" ustawione jest na 15 RPM)
 * speed - Aktualna prędkość łazika wyrażona w km/h
 * angularSpeed - Aktualna prędkość obrotowa łazika wyrażona w RPM
+* mode - tryb sterowania (M - manual, A - Autonomous)
 
 ## Tryb Autonomous
 
-W tym trybie wyłączone jest sterowanie manualne. Jest ono natomiast przekazywane przez protokół Socket.IO. Przykład użycia można znaleźć w folderze `example`.
+W tym trybie sterowanie domyślnie przekazywane jest przez protokół Socket.IO. Aby przełączyć na sterowanie manualne, należy naciśnąć przycisk `Control` (domyślnie lewy ctrl). Przykład użycia można znaleźć w folderze `example`.
 
 ### Przykładowy program
 
@@ -81,8 +82,8 @@ Uruchamianie:
 
 Działanie:
 
-* symulator otwiera socket na porcie 4567
-* skrypt łączy się przez ten socket
+* skrypt tworzy serwer Socket.IO na porcie 4567
+* symulator łączy się z serwerem
 * symulator po otwarciu połączenia, wysyła Event `telemetry`, zawierający dane o aktualnej prędkości łazika oraz obraz z przedniej kamery
 * skrypt odbiera event, konwertuje otrzymany obraz do postaci tablicy RGB i pokazuje plot tego obrazka
 * gdy użytkownik zamknie plot, skrypt wysyła Event `steer` z losowymi wartościami `accel` i `steering`
