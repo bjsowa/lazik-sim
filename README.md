@@ -5,7 +5,10 @@ Symulacja uniwersyteckiego łazika w Unity
 
 # Skompilowane Wersje
 
-Wersje aplikacji zbudowane na systemy Windows, Linux i Mac dostępne w zakładce Downloads
+Wersja 1, 14.01.17
+[Windows](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v1_Windows.zip)
+[Mac](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v1_Mac.zip)
+[Linux](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v1_Linux.zip)
 
 ***
 
