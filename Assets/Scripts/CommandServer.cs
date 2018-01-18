@@ -2,6 +2,7 @@
 using SocketIO;
 using System.Collections.Generic;
 using System;
+using System.Globalization;
 
 public class CommandServer : MonoBehaviour {
 
@@ -41,8 +42,8 @@ public class CommandServer : MonoBehaviour {
         {
             JSONObject jsonObject = obj.data;
 
-            float accel = float.Parse(jsonObject.GetField("accel").str);
-            float steering = float.Parse(jsonObject.GetField("steering").str);
+            float accel = float.Parse(jsonObject.GetField("accel").str, CultureInfo.InvariantCulture);
+            float steering = float.Parse(jsonObject.GetField("steering").str, CultureInfo.InvariantCulture);
             m_Pid.Move(accel, steering);
         }
 	}
@@ -68,8 +69,8 @@ public class CommandServer : MonoBehaviour {
     private void EmitTelemetry()
     {
         Dictionary<string, string> data = new Dictionary<string, string>();
-        data["speed"] = m_Car.speed.ToString("N4");
-        data["angularSpeed"] = m_Car.angularSpeed.ToString("N4");
+        data["speed"] = m_Car.speed.ToString("N4", CultureInfo.InstalledUICulture);
+        data["angularSpeed"] = m_Car.angularSpeed.ToString("N4", CultureInfo.InstalledUICulture);
         data["image"] = Convert.ToBase64String(CaptureFrame(m_FrontCamera));
         m_Socket.Emit("telemetry", new JSONObject(data));
     }
