@@ -99,6 +99,12 @@ namespace SocketIO
 			sid = null;
 			packetId = 0;
 
+            if (SettingsManager.Instance != null)
+            {
+                Settings settings = SettingsManager.Instance.settings;
+                url = "ws://" + settings.ip + ":" + settings.port + "/socket.io/?EIO=4&transport=websocket";
+            }
+
 			ws = new WebSocket(url);
 			ws.OnOpen += OnOpen;
 			ws.OnMessage += OnMessage;
