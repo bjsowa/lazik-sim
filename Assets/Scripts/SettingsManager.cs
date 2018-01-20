@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.IO.IsolatedStorage;
+using System;
 
 public class Settings
 {
-    public int v1;
-    public int v2;
+    public string ip;
+    public string port;
 
     public Settings()
     {
-        v1 = 1;
-        v2 = 2;
+        ip = "127.0.0.1";
+        port = "4567";
     }
 }
 
@@ -42,13 +44,16 @@ public class SettingsManager : MonoBehaviour
             string jsonData = File.ReadAllText(Application.dataPath + "/settings.json");
             settings = JsonUtility.FromJson<Settings>(jsonData);
         }
-        catch (FileNotFoundException)
+        catch (Exception ex)
         {
-            settings = new Settings();
-            SaveSettings();
+            if (ex is FileNotFoundException || ex is IsolatedStorageException)
+            {
+                settings = new Settings();
+                SaveSettings();
+                return;
+            }
+            throw;
         }
-
-        Debug.Log(settings.v1.ToString() + " " + settings.v2.ToString());
     }
 
     public void SaveSettings()
