@@ -102,7 +102,7 @@ namespace SocketIO
             if (SettingsManager.Instance != null)
             {
                 Settings settings = SettingsManager.Instance.settings;
-                url = "ws://" + settings.ip + ":" + settings.port + "/socket.io/?EIO=4&transport=websocket";
+                url = "ws://" + settings.ip + ":" + settings.port.ToString() + "/socket.io/?EIO=4&transport=websocket";
             }
 
 			ws = new WebSocket(url);

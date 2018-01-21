@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class MenuScript : MonoBehaviour {
 
     public InputField IPField;
     public InputField PortField;
+    public InputField WidthField;
+    public InputField HeightField;
 
 	public void PlayTraining()
 	{
@@ -26,8 +27,18 @@ public class MenuScript : MonoBehaviour {
 
     public void ApplySettings()
     {
-        SettingsManager.Instance.settings.ip = IPField.text;
-        SettingsManager.Instance.settings.port = PortField.text;
+        try
+        {
+            SettingsManager.Instance.settings.ip = IPField.text;
+            SettingsManager.Instance.settings.port = Int32.Parse(PortField.text);
+            SettingsManager.Instance.settings.width = Int32.Parse(WidthField.text);
+            SettingsManager.Instance.settings.height = Int32.Parse(HeightField.text);
+        }
+        catch (OverflowException)
+        {
+            SettingsManager.Instance.LoadSettings();
+        }
+
         SettingsManager.Instance.SaveSettings();
     }
 
@@ -35,7 +46,9 @@ public class MenuScript : MonoBehaviour {
     {
         Settings settings = SettingsManager.Instance.settings;
         IPField.text = settings.ip;
-        PortField.text = settings.port;
+        PortField.text = settings.port.ToString();
+        WidthField.text = settings.width.ToString();
+        HeightField.text = settings.height.ToString();
     }
 
     private void Start()

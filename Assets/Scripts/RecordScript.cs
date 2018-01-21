@@ -24,9 +24,8 @@ internal class CarSample
     public char mode;
 }
 
-public class RecordScript : MonoBehaviour {
-
-    //[SerializeField] private Camera m_CenterCamera = new Camera();
+public class RecordScript : MonoBehaviour
+{
     [SerializeField] private MyCamera[] m_Cameras;
 
     private const string m_CSVFileName = "driving_log.csv";
@@ -41,7 +40,10 @@ public class RecordScript : MonoBehaviour {
 	private Queue<CarSample> m_CarSamples;
 	private Vector3 m_SavedPosition;
 	private Quaternion m_SavedRotation;
+    private Vector3 m_SavedVelocity;
 	private bool m_IsRecording = false;
+
+    private RenderTexture m_TargetTexture;
 
     private void Awake()
     {
@@ -49,6 +51,22 @@ public class RecordScript : MonoBehaviour {
         m_Car = GetComponent<CarController>();
         m_Pid = GetComponent<PidController>();
         m_Control = GetComponent<CarUserControl>();
+
+        int width, height;
+        if (SettingsManager.Instance == null)
+        {
+            width = 320;
+            height = 160;
+        }
+        else
+        {
+            width = SettingsManager.Instance.settings.width;
+            height = SettingsManager.Instance.settings.height;
+        }
+
+        m_TargetTexture = new RenderTexture(width,height, 24, RenderTextureFormat.ARGB32);
+        foreach( MyCamera cam in m_Cameras )
+            cam.camera.targetTexture = m_TargetTexture;
     }
 
     public int totalSamples { get; private set; }
@@ -71,22 +89,22 @@ public class RecordScript : MonoBehaviour {
                 {
                     if (checkSaveLocation())
                     {
-                        m_IsRecording = true;
                         Debug.Log("Starting to record");
+                        m_IsRecording = true;
                         m_CarSamples = new Queue<CarSample>();
                         StartCoroutine(Sample());
                     }
                 }
                 else
                 {
-                    m_IsRecording = false;
                     Debug.Log("Stopping record");
+                    m_IsRecording = false;
                     StopCoroutine(Sample());
+
                     Debug.Log("Writing to disk");
-                    //save the cars coordinate parameters so we can reset it to this properly after capturing data
                     m_SavedPosition = transform.position;
                     m_SavedRotation = transform.rotation;
-                    //see how many samples we captured use this to show save percentage in UISystem script
+                    m_SavedVelocity = m_Rigidbody.velocity;
                     totalSamples = m_CarSamples.Count;
                     isSaving = true;
                     StartCoroutine(WriteSamplesToDisk());
@@ -97,11 +115,13 @@ public class RecordScript : MonoBehaviour {
 		
 	private bool checkSaveLocation()
 	{
-		if (m_SaveLocation != "") {
-			return true;
-		} else {
-			FileBrowser.ShowSaveDialog (OpenFolder, null, true, null, "Select Output Folder", "Select");
-		}
+        if (m_SaveLocation != "")
+            return true;
+        else
+        {
+            FileBrowser.ShowSaveDialog
+                (OpenFolder, null, true, null, "Select Output Folder", "Select");
+        }
 		return false;
 	}
 
@@ -111,13 +131,12 @@ public class RecordScript : MonoBehaviour {
 		Directory.CreateDirectory (Path.Combine(m_SaveLocation, m_DirFrames));
 	}
 
-	//Changed the WriteSamplesToDisk to a IEnumerator method that plays back recording along with percent status from UISystem script 
-	//instead of showing frozen screen until all data is recorded
 	private IEnumerator WriteSamplesToDisk()
 	{
-		yield return new WaitForSeconds(0.000f); //retrieve as fast as we can but still allow communication of main thread to screen and UISystem
+        //retrieve as fast as we can but still allow communication of main thread to screen and UISystem
+        yield return new WaitForSeconds(0.000f); 
 		if (m_CarSamples.Count > 0) {
-			//pull off a sample from the que
+			//pull off a sample from the queue
 			CarSample sample = m_CarSamples.Dequeue();
 
 			//pysically moving the car to get the right camera position
@@ -143,11 +162,10 @@ public class RecordScript : MonoBehaviour {
 			StopCoroutine(WriteSamplesToDisk());
 			isSaving = false;
 
-			//need to reset the car back to its position before ending recording, otherwise sometimes the car ended up in strange areas
+			//need to reset the car back to its position before ending recording
 			transform.position = m_SavedPosition;
 			transform.rotation = m_SavedRotation;
-			m_Rigidbody.velocity = new Vector3(0f,-10f,0f);
-			//Move(0f, 0f, 0f, 0f);
+            m_Rigidbody.velocity = m_SavedVelocity;
 
 		}
 	}
@@ -162,7 +180,7 @@ public class RecordScript : MonoBehaviour {
 		{
 			CarSample sample = new CarSample();
 
-			sample.timeStamp = System.DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff");
+			sample.timeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff");
             sample.mode = m_Control.currentMode == CarUserControl.Mode.Autonomous ? 'A' : 'M';
 			sample.accel = m_Pid.accel;
 			sample.steering = m_Pid.steering;
@@ -174,31 +192,36 @@ public class RecordScript : MonoBehaviour {
 			m_CarSamples.Enqueue(sample);
 
 			sample = null;
-			//may or may not be needed
 		}
 
-		// Only reschedule if the button hasn't toggled
-		if (isRecording){
+		// Only reschedule if the button hasn't been toggled
+		if (isRecording)
 			StartCoroutine(Sample());
-		}
 
 	}
 
 	private string WriteImage (Camera camera, string prepend, string timestamp)
 	{
-		//needed to force camera update 
+		//force camera update 
 		camera.Render();
+
 		RenderTexture targetTexture = camera.targetTexture;
 		RenderTexture.active = targetTexture;
-		Texture2D texture2D = new Texture2D (targetTexture.width, targetTexture.height, TextureFormat.RGB24, false);
+
+		Texture2D texture2D = new Texture2D (
+            targetTexture.width, targetTexture.height, TextureFormat.RGB24, false);
 		texture2D.ReadPixels (new Rect (0, 0, targetTexture.width, targetTexture.height), 0, 0);
 		texture2D.Apply ();
+
 		byte[] image = texture2D.EncodeToJPG ();
-		UnityEngine.Object.DestroyImmediate (texture2D);
-		string directory = Path.Combine(m_SaveLocation, m_DirFrames);
-		string path = Path.Combine(directory, prepend + "_" + timestamp + ".jpg");
-		File.WriteAllBytes (path, image);
+		DestroyImmediate (texture2D);
+
+        string filename = Path.Combine(m_DirFrames, prepend + "_" + timestamp + ".jpg");
+        string path = Path.Combine(m_SaveLocation, filename);
+
+        File.WriteAllBytes (path, image);
 		image = null;
-		return path;
+
+		return filename;
 	}
 }

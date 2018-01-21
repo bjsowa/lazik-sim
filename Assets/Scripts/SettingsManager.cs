@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 using System.IO;
 using System.IO.IsolatedStorage;
-using System;
 
 public class Settings
 {
+    public int width;
+    public int height;
     public string ip;
-    public string port;
+    public int port;
 
     public Settings()
     {
+        width = 320;
+        height = 160;
         ip = "127.0.0.1";
-        port = "4567";
+        port = 4567;
     }
 }
 
