@@ -10,11 +10,10 @@ public class UIScript : MonoBehaviour {
     [SerializeField] private Sprite m_RecordSprite;
     [SerializeField] private Sprite m_StopSprite;
 
-    [Header("Texts")] 
+    [Header("Texts")]
+    [SerializeField] private Text m_AccelText;
+    [SerializeField] private Text m_SteeringText;
     [SerializeField] private Text m_SpeedText;
-    [SerializeField] private Text m_AngularSpeedText;
-    [SerializeField] private Text m_TargetSpeedText;
-    [SerializeField] private Text m_TargetAngularSpeedText;
     [SerializeField] private Text m_CollectingDataText;
     [SerializeField] private Text m_ModeText;
 
@@ -24,10 +23,9 @@ public class UIScript : MonoBehaviour {
     private CarUserControl m_Control;
     private Image m_RecordImage;
 
+    private string m_BaseAccel;
+    private string m_BaseSteering;
     private string m_BaseSpeed;
-    private string m_BaseAngularSpeed;
-    private string m_BaseTargetSpeed;
-    private string m_BaseTargetAngularSpeed;
     private string m_BaseCollectingData;
     private string m_BaseMode;
 
@@ -43,10 +41,9 @@ public class UIScript : MonoBehaviour {
 
     private void Start()
     {
+        m_BaseAccel = m_AccelText.text;
+        m_BaseSteering = m_SteeringText.text;
         m_BaseSpeed = m_SpeedText.text;
-        m_BaseAngularSpeed = m_AngularSpeedText.text;
-        m_BaseTargetSpeed = m_TargetSpeedText.text;
-        m_BaseTargetAngularSpeed = m_TargetAngularSpeedText.text;
         m_BaseCollectingData = m_CollectingDataText.text;
 
         if (m_ModeText != null)
@@ -79,10 +76,9 @@ public class UIScript : MonoBehaviour {
         if (Input.GetButtonDown("Record"))
             ToggleRecord();
 
-        m_SpeedText.text = m_BaseSpeed + m_Car.speed.ToString("0.00") + " km/h";
-        m_AngularSpeedText.text = m_BaseAngularSpeed + m_Car.angularSpeed.ToString("0.00") + " RPM";
-        m_TargetSpeedText.text = m_BaseTargetSpeed + m_Pid.targetSpeed.ToString("0.00") + " km/h";
-        m_TargetAngularSpeedText.text = m_BaseTargetAngularSpeed + m_Pid.targetAngularSpeed.ToString("0.00") + " RPM";
+        m_AccelText.text = m_BaseAccel + m_Pid.Accel.ToString("0.00");
+        m_SteeringText.text = m_BaseSteering + m_Pid.Steering.ToString("0.00");
+        m_SpeedText.text = m_BaseSpeed + m_Car.Speed.ToString("0.00") + " km/h";
 
         if (m_ModeText != null)
         {

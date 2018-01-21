@@ -14,14 +14,13 @@ public class MyCamera
 
 internal class CarSample
 {
-    public Quaternion rotation;
-    public Vector3 position;
-    public float accel;
-    public float steering;
-    public float speed;
-    public float angularSpeed;
-    public string timeStamp;
-    public char mode;
+    public Quaternion Rotation;
+    public Vector3 Position;
+    public float Accel;
+    public float Steering;
+    public float Speed;
+    public string TimeStamp;
+    public char Mode;
 }
 
 public class RecordScript : MonoBehaviour
@@ -145,16 +144,16 @@ public class RecordScript : MonoBehaviour
 			CarSample sample = m_CarSamples.Dequeue();
 
 			//pysically moving the car to get the right camera position
-			transform.position = sample.position;
-			transform.rotation = sample.rotation;
+			transform.position = sample.Position;
+			transform.rotation = sample.Rotation;
 
             // Capture and Persist Image
             string paths = "";
             foreach (MyCamera cam in m_Cameras)
-                paths += WriteImage(cam.camera, cam.name, sample.timeStamp) + ",";
+                paths += WriteImage(cam.camera, cam.name, sample.TimeStamp) + ",";
 
-			string row = string.Format ("{0}{1},{2},{3},{4},{5}\n", 
-                paths, sample.accel, sample.steering, sample.speed, sample.angularSpeed, sample.mode);
+			string row = string.Format ("{0}{1},{2},{3},{4}\n", 
+                paths, sample.Accel, sample.Steering, sample.Speed, sample.Mode);
 			File.AppendAllText (Path.Combine (m_SaveLocation, m_CSVFileName), row);
 		}
 		if (m_CarSamples.Count > 0) {
@@ -185,14 +184,13 @@ public class RecordScript : MonoBehaviour
 		{
 			CarSample sample = new CarSample();
 
-			sample.timeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff");
-            sample.mode = m_Control.currentMode == CarUserControl.Mode.Autonomous ? 'A' : 'M';
-			sample.accel = m_Pid.accel;
-			sample.steering = m_Pid.steering;
-			sample.speed = m_Car.speed;
-			sample.angularSpeed = m_Car.angularSpeed;
-			sample.position = transform.position;
-			sample.rotation = transform.rotation;
+			sample.TimeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff");
+            sample.Mode = m_Control.currentMode == CarUserControl.Mode.Autonomous ? 'A' : 'M';
+			sample.Accel = m_Pid.Accel;
+			sample.Steering = m_Pid.Steering;
+			sample.Speed = m_Car.Speed;
+			sample.Position = transform.position;
+			sample.Rotation = transform.rotation;
 
 			m_CarSamples.Enqueue(sample);
 

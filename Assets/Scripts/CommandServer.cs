@@ -69,8 +69,7 @@ public class CommandServer : MonoBehaviour {
     private void EmitTelemetry()
     {
         Dictionary<string, string> data = new Dictionary<string, string>();
-        data["speed"] = m_Car.speed.ToString("N4", CultureInfo.InstalledUICulture);
-        data["angularSpeed"] = m_Car.angularSpeed.ToString("N4", CultureInfo.InstalledUICulture);
+        data["speed"] = m_Car.Speed.ToString("N4", CultureInfo.InstalledUICulture);
         data["image"] = Convert.ToBase64String(CaptureFrame(m_FrontCamera));
         m_Socket.Emit("telemetry", new JSONObject(data));
     }

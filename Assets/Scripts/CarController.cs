@@ -16,85 +16,70 @@ public class CarController : MonoBehaviour
 	[SerializeField] private float m_BreakTorque = 100f;
     [SerializeField] private float m_DownForce = 100f;
 
-	[SerializeField] private float m_SteeringMultiplier = 2f;
-
     private Rigidbody m_Rigidbody;
-	private float m_WheelCircumference;
+    private float m_WheelCircumference;
 	private float m_MaxRPM;
 
-	[HideInInspector] public float speed = 0f;
-	[HideInInspector] public float angularSpeed = 0f;
+    public float Speed { get; private set; }
+    public float[] WheelSpeed { get; private set; }
 
-    private void Start ()
+    private void Awake()
     {
-        m_WheelColliders [0].attachedRigidbody.centerOfMass = m_CentreOfMassOffset;
-        m_Rigidbody = GetComponent<Rigidbody> ();
-
-		m_WheelCircumference = m_WheelColliders [0].radius * Mathf.PI * 2f;
-		m_MaxRPM = (m_NoLoadSpeed / m_WheelCircumference) * 1000f / 60f;
+        m_Rigidbody = GetComponent<Rigidbody>();
     }
-		
 
-	public void Move (float accel, float steering)
+    private void Start()
     {
-        for (int i = 0; i < 4; i++) {
+        m_Rigidbody.centerOfMass = m_CentreOfMassOffset;
+
+        m_WheelCircumference = m_WheelColliders[0].radius * Mathf.PI * 2f;
+        m_MaxRPM = (m_NoLoadSpeed / m_WheelCircumference) * 1000f / 60f;
+
+        WheelSpeed = new float[] { 0f, 0f, 0f, 0f };
+        Speed = 0f;
+    }
+
+    private void Update()
+    {
+        // transform meshes
+        for (int i = 0; i < 4; i++)
+        {
             Quaternion quat;
             Vector3 position;
-            m_WheelColliders [i].GetWorldPose (out position, out quat);
-            m_WheelMeshes [i].transform.position = position;
-            m_WheelMeshes [i].transform.rotation = quat;
+            m_WheelColliders[i].GetWorldPose(out position, out quat);
+            m_WheelMeshes[i].transform.position = position;
+            m_WheelMeshes[i].transform.rotation = quat;
         }
 
-        //clamp input values
-        steering = Mathf.Clamp (steering, -1, 1);
-        accel = Mathf.Clamp (accel, -1, 1);
+        // calculate speed 
+        WheelSpeed[0] = m_WheelColliders[0].rpm * m_WheelCircumference * 3.6f / 60f;
+        WheelSpeed[1] = m_WheelColliders[1].rpm * m_WheelCircumference * 3.6f / 60f;
+        WheelSpeed[2] = m_WheelColliders[2].rpm * m_WheelCircumference * 3.6f / 60f;
+        WheelSpeed[3] = m_WheelColliders[3].rpm * m_WheelCircumference * 3.6f / 60f;
 
-        ApplyDrive (accel, steering);
+        Speed = (WheelSpeed[0] + WheelSpeed[1] + WheelSpeed[2] + WheelSpeed[3]) / 4f;
 
-        AddDownForce ();
-		CalculateSpeed ();
+        // add more grip in relation to speed
+        AddDownForce();
     }
 
-	private void CalculateSpeed()
-	{
-		float xSpeed = m_Rigidbody.velocity.x * transform.forward.x;
-		float ySpeed = m_Rigidbody.velocity.y * transform.forward.y;
-		float zSpeed = m_Rigidbody.velocity.z * transform.forward.z;
-		speed = (xSpeed + ySpeed + zSpeed) * 3.6f;
-
-		angularSpeed = (m_Rigidbody.angularVelocity.y / (2f * Mathf.PI)) * 60f;
-	}
-
-
-    private void ApplyDrive (float accel, float steering)
-    {
-		float leftAccel = Mathf.Clamp (accel + m_SteeringMultiplier*steering, -1, 1);
-		float rightAccel = Mathf.Clamp (accel - m_SteeringMultiplier*steering, -1, 1);
-
-		ApplyTorque (0, rightAccel);
-		ApplyTorque (1, leftAccel);
-		ApplyTorque (2, rightAccel);
-		ApplyTorque (3, leftAccel);
-    }
-
-	private void ApplyTorque(int i, float accel)
+	public void ApplyTorque(int i, float accel)
 	{
 		float thrustTorque = (accel * m_StallTorque);
 		float breakTorque = (accel * m_BreakTorque);
 		if (m_WheelColliders [i].rpm * accel >= 0f) {
-			m_WheelColliders [i].motorTorque = thrustTorque * (m_MaxRPM - Mathf.Abs (m_WheelColliders [i].rpm)) / m_MaxRPM;
+			m_WheelColliders [i].motorTorque = 
+                thrustTorque * (m_MaxRPM - Mathf.Abs (m_WheelColliders [i].rpm)) / m_MaxRPM;
 		} else {
-			m_WheelColliders [i].motorTorque = thrustTorque + breakTorque * Mathf.Abs (m_WheelColliders [i].rpm) / m_MaxRPM;
+			m_WheelColliders [i].motorTorque = 
+                thrustTorque + breakTorque * Mathf.Abs (m_WheelColliders [i].rpm) / m_MaxRPM;
 		}
 	}
 
-
-
-    // this is used to add more grip in relation to speed
     private void AddDownForce ()
     {
-        m_WheelColliders [0].attachedRigidbody.AddForce (-transform.up * m_DownForce *
-        	m_WheelColliders [0].attachedRigidbody.velocity.magnitude);
+        m_Rigidbody.AddForce (-transform.up * m_DownForce *
+        	m_Rigidbody.velocity.magnitude);
     }
 		
 }

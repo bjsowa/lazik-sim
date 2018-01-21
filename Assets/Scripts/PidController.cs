@@ -6,95 +6,76 @@ using UnityEngine;
 public class PidController : MonoBehaviour 
 {
 	private CarController m_Car;
+    
+	[SerializeField] private float m_TopSpeed = 30f;
+	[SerializeField] private float m_P = 1f;
+	[SerializeField] private float m_I = 1f;
+	[SerializeField] private float m_D = 1f;
+	[SerializeField] private float m_SpeedThreshold = 1f;
 
-    [Header("Forward Speed PID")]
-	[SerializeField] private float m_TopForwardSpeed = 30f;
-	[SerializeField] private float m_PForward = 1f;
-	[SerializeField] private float m_IForward = 1f;
-	[SerializeField] private float m_DForward = 1f;
-	[SerializeField] private float m_ForwardSpeedThreshold = 1f;
+    // Input Values
+    public float Accel { get; private set; }
+    public float Steering { get; private set; }
 
-    [Header("Angular Speed PID")]
-	[SerializeField] private float m_TopAngularSpeed = 30f;
-	[SerializeField] private float m_PAngular = 1f;
-	[SerializeField] private float m_IAngular = 1f;
-	[SerializeField] private float m_DAngular = 1f;
-	[SerializeField] private float m_AngularSpeedThreshold = 1f;
+    // Output Values
+    public float[] Proportion { get; private set; }
+	public float[] Integral { get; private set; }
+    public float[] Derivative { get; private set; }
+    public float[] Errors { get; private set; }
+    public float[] Result { get; private set; }
 
-	private float m_PreviousForwardError = 0f;
-	private float m_CurrentForwardError = 0f;
-
-	private float m_PreviousAngularError = 0f;
-	private float m_CurrentAngularError = 0f;
-
-	[HideInInspector] public float accelProportional = 0f;
-	[HideInInspector] public float accelIntegral = 0f;
-	[HideInInspector] public float accelDerivative = 0f;
-	[HideInInspector] public float accelResult = 0f;
-
-	[HideInInspector] public float steeringProportional = 0f;
-	[HideInInspector] public float steeringIntegral = 0f;
-	[HideInInspector] public float steeringDerivative = 0f;
-	[HideInInspector] public float steeringResult = 0f;
-
-	public float accel { get; private set; }
-	public float steering { get; private set; }
-    public float targetSpeed { get; private set; }
-    public float targetAngularSpeed { get; private set; }
-
-	private void Awake() {
+	private void Awake()
+    {
 		m_Car = GetComponent<CarController> ();
 	}
 
-	public void Move (float accelUser, float steeringUser) {
-		accel = accelUser;
-		steering = steeringUser;
+    private void Start()
+    {
+        Proportion = new float[] { 0f, 0f, 0f, 0f };
+        Integral = new float[] { 0f, 0f, 0f, 0f };
+        Derivative = new float[] { 0f, 0f, 0f, 0f };
+        Errors = new float[] { 0f, 0f, 0f, 0f };
+        Result = new float[] { 0f, 0f, 0f, 0f };
+        Accel = 0f;
+        Steering = 0f;
+    }
+
+    public void Move (float accelUser, float steeringUser) {
+		Accel = Mathf.Clamp(accelUser, -1f, 1f);
+		Steering = Mathf.Clamp(steeringUser, -1f, 1f);
 	}
 
-	private void FixedUpdate() 
+	private void Update() 
 	{
-		float carForwardSpeed = m_Car.speed;
-		if (Mathf.Abs (carForwardSpeed) < m_ForwardSpeedThreshold) {
-			carForwardSpeed = 0f;
-			accelIntegral = 0f;
-		}
-			
-		targetSpeed = accel * m_TopForwardSpeed;
-		m_CurrentForwardError = targetSpeed - carForwardSpeed;
+        for (int i = 0; i < 4; i++)
+        {
+            float speed = m_Car.WheelSpeed[i];
 
-		accelProportional = m_PForward * m_CurrentForwardError / m_TopForwardSpeed;
-		accelIntegral += (m_IForward * (m_CurrentForwardError + m_PreviousForwardError) / 2f * Time.deltaTime) / m_TopForwardSpeed;
-		accelDerivative = (m_DForward * (m_CurrentForwardError - m_PreviousForwardError) / Time.deltaTime) / m_TopForwardSpeed;
+            if (Mathf.Abs(speed) < m_SpeedThreshold)
+            {
+                speed = 0f;
+                Integral[i] = 0f;
+            }
 
-		accelIntegral = Mathf.Clamp (accelIntegral, -1, 1);
+            float targetAccel;
+            if (i == 0 || i == 2)
+                targetAccel = Mathf.Clamp(Accel - Steering, -1f, 1f);
+            else
+                targetAccel = Mathf.Clamp(Accel + Steering, -1f, 1f);
 
-		accelResult = Mathf.Clamp(accelProportional + accelIntegral + accelDerivative, -1, 1);
+            float targetSpeed = targetAccel * m_TopSpeed;
+            float newError = targetSpeed - speed;
 
+            Proportion[i] = m_P * newError / m_TopSpeed;
+            Integral[i] = (m_I * (newError + Errors[i]) / 2f * Time.deltaTime) / m_TopSpeed;
+            Derivative[i] = (m_D * (newError - Errors[i]) / Time.deltaTime) / m_TopSpeed;
 
-		float carAngularSpeed = m_Car.angularSpeed;
-		if (Mathf.Abs (carAngularSpeed) < m_AngularSpeedThreshold) {
-			carAngularSpeed = 0f;
-			steeringIntegral = 0f;
-		}
+            // prevent
+            Integral[i] = Mathf.Clamp(Integral[i], -1, 1);
 
-		targetAngularSpeed = steering * m_TopAngularSpeed;
-		m_CurrentAngularError = targetAngularSpeed - carAngularSpeed;
+            Result[i] = Mathf.Clamp(Proportion[i] + Integral[i] + Derivative[i], -1, 1);
 
-		steeringProportional = m_PAngular * m_CurrentAngularError / m_TopAngularSpeed;
-		steeringIntegral += (m_IAngular * (m_CurrentAngularError + m_PreviousAngularError) / 2f * Time.deltaTime) / m_TopAngularSpeed;
-		steeringDerivative = (m_DAngular * (m_CurrentAngularError - m_PreviousAngularError) / Time.deltaTime) / m_TopAngularSpeed;
-
-		steeringIntegral = Mathf.Clamp (steeringIntegral, -1, 1);
-
-		steeringResult = Mathf.Clamp(steeringProportional + steeringIntegral + steeringDerivative, -1, 1);
-
-
-		//Debug.Log ("target speed: " + targetSpeed);
-		//Debug.Log ("accel: " + accel);
-
-		m_Car.Move (accelResult, steeringResult);
-
-		m_PreviousForwardError = m_CurrentForwardError;
-		m_PreviousAngularError = m_CurrentAngularError;
+            m_Car.ApplyTorque(i, Result[i]);
+        }
 	}
 }
