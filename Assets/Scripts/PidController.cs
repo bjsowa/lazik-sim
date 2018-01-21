@@ -45,7 +45,7 @@ public class PidController : MonoBehaviour
 		Steering = Mathf.Clamp(steeringUser, -1f, 1f);
 	}
 
-	private void Update() 
+	private void FixedUpdate() 
 	{
         for (int i = 0; i < 4; i++)
         {
@@ -59,22 +59,31 @@ public class PidController : MonoBehaviour
 
             float targetAccel;
             if (i == 0 || i == 2)
-                targetAccel = Mathf.Clamp(Accel - Steering, -1f, 1f);
+                targetAccel = Accel - Steering;
             else
-                targetAccel = Mathf.Clamp(Accel + Steering, -1f, 1f);
+                targetAccel = Accel + Steering;
 
             float targetSpeed = targetAccel * m_TopSpeed;
             float newError = targetSpeed - speed;
 
-            Proportion[i] = m_P * newError / m_TopSpeed;
-            Integral[i] = (m_I * (newError + Errors[i]) / 2f * Time.deltaTime) / m_TopSpeed;
+            Proportion[i] = (m_P * newError) / m_TopSpeed;
+            Integral[i] += (m_I * (newError + Errors[i]) / 2f * Time.deltaTime) / m_TopSpeed;
             Derivative[i] = (m_D * (newError - Errors[i]) / Time.deltaTime) / m_TopSpeed;
 
-            // prevent
-            Integral[i] = Mathf.Clamp(Integral[i], -1, 1);
+            Debug.Log("Proportion: " + Proportion[i].ToString());
+            Debug.Log("Integral: " + Integral[i].ToString());
 
-            Result[i] = Mathf.Clamp(Proportion[i] + Integral[i] + Derivative[i], -1, 1);
+            Proportion[i] = Mathf.Clamp(Proportion[i], -1f, 1f);
 
+            // prevent integral wind-up
+            float result = Proportion[i] + Integral[i];
+            if (result > 1f)
+                Integral[i] -= result - 1f;
+            else if (result < -1f)
+                Integral[i] -= result + 1f;
+
+            // apply result 
+            Result[i] = Mathf.Clamp(Proportion[i] + Integral[i] + Derivative[i], -1f, 1f);
             m_Car.ApplyTorque(i, Result[i]);
         }
 	}
