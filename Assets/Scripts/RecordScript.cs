@@ -44,6 +44,7 @@ public class RecordScript : MonoBehaviour
 	private bool m_IsRecording = false;
 
     private RenderTexture m_TargetTexture;
+    private float m_FrameDelay;
 
     private void Awake()
     {
@@ -52,21 +53,25 @@ public class RecordScript : MonoBehaviour
         m_Pid = GetComponent<PidController>();
         m_Control = GetComponent<CarUserControl>();
 
-        int width, height;
+        int width, height, fps;
         if (SettingsManager.Instance == null)
         {
             width = 320;
             height = 160;
+            fps = 15;
         }
         else
         {
             width = SettingsManager.Instance.settings.width;
             height = SettingsManager.Instance.settings.height;
+            fps = SettingsManager.Instance.settings.fps;
         }
 
         m_TargetTexture = new RenderTexture(width,height, 24, RenderTextureFormat.ARGB32);
         foreach( MyCamera cam in m_Cameras )
             cam.camera.targetTexture = m_TargetTexture;
+
+        m_FrameDelay = 1 / ((float)fps);
     }
 
     public int totalSamples { get; private set; }
@@ -172,9 +177,9 @@ public class RecordScript : MonoBehaviour
 
 	private IEnumerator Sample()
 	{
-		// Start the Coroutine to Capture Data Every Second.
+		// Start the Coroutine to Capture Data.
 		// Persist that Information to a CSV and Perist the Camera Frame
-		yield return new WaitForSeconds(0.0666666666666667f);
+		yield return new WaitForSeconds(m_FrameDelay);
 
 		if (m_SaveLocation != "")
 		{

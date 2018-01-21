@@ -7,6 +7,7 @@ public class Settings
 {
     public int width;
     public int height;
+    public int fps;
     public string ip;
     public int port;
 
@@ -14,6 +15,7 @@ public class Settings
     {
         width = 320;
         height = 160;
+        fps = 15;
         ip = "127.0.0.1";
         port = 4567;
     }
