@@ -82,7 +82,7 @@ public class UIScript : MonoBehaviour {
 
         if (m_ModeText != null)
         {
-            if (m_Control.currentMode == CarUserControl.Mode.Autonomous)
+            if (m_Control.CurrentMode == CarUserControl.Mode.Autonomous)
                 m_ModeText.text = m_BaseMode + "Autonomous";
             else
                 m_ModeText.text = m_BaseMode + "Manual";

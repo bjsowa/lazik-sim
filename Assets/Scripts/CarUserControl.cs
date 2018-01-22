@@ -10,34 +10,31 @@ public class CarUserControl : MonoBehaviour
     private PidController m_Controller;
 
     public enum Mode { Manual, Autonomous };
-    public Mode currentMode { get; private set; }
+    public Mode CurrentMode { get; private set; }
 
     private void Awake() {
         m_Controller = GetComponent<PidController> ();
         if (m_Autonomous)
-            currentMode = Mode.Autonomous;
+            CurrentMode = Mode.Autonomous;
         else
-            currentMode = Mode.Manual;
+            CurrentMode = Mode.Manual;
     }
 
     private void Update()
     {
         if (m_Autonomous && Input.GetButtonDown("Control"))
         {
-            if (currentMode == Mode.Autonomous)
-                currentMode = Mode.Manual;
+            if (CurrentMode == Mode.Autonomous)
+                CurrentMode = Mode.Manual;
             else
-                currentMode = Mode.Autonomous;
+                CurrentMode = Mode.Autonomous;
         }
-    }
 
-    private void FixedUpdate()
-    {
-        if (currentMode == Mode.Manual)
+        if (CurrentMode == Mode.Manual)
         {
-            float v = Input.GetAxis("Vertical");
-            float h = Input.GetAxis("Horizontal");
-            m_Controller.Move(v, h);
+            float accel = Input.GetAxis("Accel");
+            float steering = Input.GetAxis("Steering");
+            m_Controller.Move(accel, steering);
         }
     }
 }

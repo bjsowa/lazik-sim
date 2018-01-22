@@ -185,7 +185,7 @@ public class RecordScript : MonoBehaviour
 			CarSample sample = new CarSample();
 
 			sample.TimeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff");
-            sample.Mode = m_Control.currentMode == CarUserControl.Mode.Autonomous ? 'A' : 'M';
+            sample.Mode = m_Control.CurrentMode == CarUserControl.Mode.Autonomous ? 'A' : 'M';
 			sample.Accel = m_Pid.Accel;
 			sample.Steering = m_Pid.Steering;
 			sample.Speed = m_Car.Speed;

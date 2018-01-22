@@ -38,7 +38,7 @@ public class CommandServer : MonoBehaviour {
 
 	void OnSteer(SocketIOEvent obj)
 	{
-        if (m_Control.currentMode == CarUserControl.Mode.Autonomous)
+        if (m_Control.CurrentMode == CarUserControl.Mode.Autonomous)
         {
             JSONObject jsonObject = obj.data;
 
