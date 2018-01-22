@@ -29,12 +29,11 @@ def disconnect(sid):
 def telemetry(sid, data):
     if data:
         speed = data["speed"]
-        angularSpeed = data["angularSpeed"]
         imgStr = data["image"]
         image = Image.open(BytesIO(base64.b64decode(imgStr)))
         image_array = np.asarray(image)
 
-        print( speed, angularSpeed )
+        print( speed )
         plt.imshow(image_array)
         plt.show()
 
