@@ -22,19 +22,32 @@ Po uruchomieniu pliku wykonywalnego, powinno pojawić się okno z konfiguracją.
 
 ![input](pictures/player_input.png)
 
-Aby uzyskać sterowanie "łazikowe", `Vertical` ustaw na lewą gałkę, a `Horizontal` na prawą.
+Aby uzyskać sterowanie "łazikowe", `Accel` ustaw na lewą gałkę, a `Steering` na prawą.
+
+## Menu
 
 Po naciśnięciu `Play`, powinno ukazać się Menu.
 
 ![menu](pictures/menu.png)
 
+Przyciski `Training` i `Autonomous` uruchamiają przejazd w odpowiednim trybie.
+
+### Ustawienia
+
+* `Top Speed` - Ograniczenie prędkości na kołach
+* `Recording FPS` - ilość zapisywanych sampli na sekundę (w rzeczywistości może ona być trochę mniejsza, ta opcja gwarantuje tylko, że nie przekroczy tej wartości)
+* `Camera Resulotion` - rozdzielczość nagrywanych oraz wysyłanych obrazów
+* `SocketIO Settings` - IP i Port serwera, na który symulator wysyła dane i od którego otrzymuje sterowanie (Tryb `Autonomous`)
+
+Ustawienia są zapisywane w pliku `settings.json` w folderze `Data`. Przycisk `Apply` zapisuje obecne ustawienia, a przycisk `Revert` wczytuje je z pliku.
+
 ## Tryb Training
 
-W trybie tym łazik sterowany jest manualnie. Sterowanie polega na zadaniu prędkości (Target Speed) oraz prędkości obrotowej (Target Angular Speed). Prędkość zadawana jest przez `Vertical`, a prędkość obrotowa przez `Horizontal`.
+W trybie tym łazik sterowany jest manualnie. Wartość `Accel` odpowiada za jazdę w przód i w tył, a wartość `Steering` za obracanie łazikiem.
 
-![ui](pictures/ui.png)
+![ui_training](pictures/ui_training.png)
 
-Łazik posiada 2 kontrolery PID, które sterują silnikami (jeden odpowiedzialny za nadanie odpowiedniej wartości `Speed`, drugi `Angular Speed`)
+W UI widnieją aktualne wartości `Accel` i `Steering` oraz prędkość łazika obliczana jako średnia prędkości na wszystkich kołach.
 
 ### Nagrywanie przejazdu
 
@@ -54,33 +67,36 @@ Aplikacja zacznie odtwarzać trasę i zapisywać zrzuty z kamery na dysk.
 
 We wskazanym folderze powstanie plik `driving_log.csv`. Każdy rekord tego pliku ma postać:
 
->`camera1,camera2,...,cameraN,accel,steering,speed,angularSpeed`
+>`camera1,camera2,...,cameraN,accel,steering,speed`
 
 Znaczenie powyższych pól:
 
 * camera - ścieżka do zrzutu z kamery (domyślnie są 3 kamery nazwane: left, center i right)
-* accel - wartość z przedziału [-1,1] oznaczająca prędkość zadaną przez użytkownika (wartość `Vertical`). Wartość 1 oznacza, że zadana została prędkość równa "Top Forward Speed" (w tej chwili ustawione na 20km/h)
-* steering - wartość z przedziału [-1,1] oznaczająca prędkość obrotową zadaną przez użytkownika (wartość `Horizontal`). ("Top Angular Speed" ustawione jest na 15 RPM)
-* speed - Aktualna prędkość łazika wyrażona w km/h
-* angularSpeed - Aktualna prędkość obrotowa łazika wyrażona w RPM
+* accel - wartość `Accel` zadana w danym momencie
+* steering - wartość `Steering` zadana w danym momencie
+* speed - prędkość łazika wyrażona w km/h (średnia prędkości na wszystkich kołach)
 * mode - tryb sterowania (M - manual, A - Autonomous)
 
 ## Tryb Autonomous
 
-W tym trybie sterowanie domyślnie przekazywane jest przez protokół Socket.IO. Aby przełączyć na sterowanie manualne, należy naciśnąć przycisk `Control` (domyślnie lewy ctrl). Przykład użycia można znaleźć w folderze `example`.
+W tym trybie sterowanie domyślnie przekazywane jest przez protokół Socket.IO. Przykładowy program, do którego może się połączyć wymulator znajduje się w folderze `example`.
+
+![ui_autonomous](pictures/ui_autonomous.png)
+
+W UI widnieje dodatkowa informacja o aktualnym trybie sterowania (`Manual` lub `Autonomous`). Przyciskiem `Control` (domyślnie lewy ctrl) można przełączać się między trybami.
 
 ### Przykładowy program
 
 Wymagania:
 
 * `Python` (testowano na wersji 3.6.4)
-* pakiety z pliku `requirements.txt`. Można je zainstalować poleceniem `pip install -r requirements.txt` (polecam stworzyć do tego oddzielne środowisko pythonowe programem `virtualenv`, żeby nie zaśmiecać systemu)
+* pakiety z pliku `requirements.txt`. Można je zainstalować poleceniem `pip install -r requirements.txt`
 
 Uruchamianie:
 
-1. Uruchom symulator (najlepiej w trybie `Windowed`, żeby widzieć łazik na żywo).
+1. Uruchom symulator
 2. Wybierz tryb `Autonomous`
-2. Uruchom z terminala skrypt `drive.py`
+3. Uruchom skrypt `drive.py`
 
 
 Działanie:
