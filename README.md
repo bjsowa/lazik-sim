@@ -61,7 +61,13 @@ Aby zakończyć nagrywanie ponownie naciśnij przycisk.
 
 ![saving](pictures/saving.png)
 
-Aplikacja zacznie odtwarzać trasę i zapisywać zrzuty z kamery na dysk.
+Aplikacja zacznie odtwarzać trasę i zapisywać zrzuty z kamer na dysk. 
+
+**Kamery**
+
+Łazik posiada 3 kamery: jedna centralna oraz 2 z boku obrócone o 20 stopni. Pozycje kamer przedstawia poniższy rysunek:
+
+![cameras](pictures/cameras.png)
 
 ### Czytanie logów
 
@@ -79,7 +85,7 @@ Znaczenie powyższych pól:
 
 ## Tryb Autonomous
 
-W tym trybie sterowanie domyślnie przekazywane jest przez protokół Socket.IO. Przykładowy program, do którego może się połączyć wymulator znajduje się w folderze `example`.
+W tym trybie sterowanie domyślnie przekazywane jest przez protokół Socket.IO. Przykładowy program, do którego może się połączyć symulator znajduje się w folderze `example`.
 
 ![ui_autonomous](pictures/ui_autonomous.png)
 
@@ -103,7 +109,7 @@ Działanie:
 
 * skrypt tworzy serwer Socket.IO na porcie 4567
 * symulator łączy się z serwerem
-* symulator po otwarciu połączenia, wysyła Event `telemetry`, zawierający dane o aktualnej prędkości łazika oraz obraz z przedniej kamery
+* symulator po otwarciu połączenia, wysyła Event `telemetry`, zawierający dane o aktualnej prędkości łazika oraz obraz z centralnej kamery
 * skrypt odbiera event, konwertuje otrzymany obraz do postaci tablicy RGB i pokazuje plot tego obrazka
 * gdy użytkownik zamknie plot, skrypt wysyła Event `steer` z losowymi wartościami `accel` i `steering`
 * symulator odbiera dane sterowania i przekazuje je do kontrolera łazika
