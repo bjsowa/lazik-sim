@@ -9,22 +9,26 @@ public class MenuScript : MonoBehaviour {
     public InputField PortField;
     public InputField WidthField;
     public InputField HeightField;
+    public Slider TopSpeedSlider;
+    public Text CurrentTopSpeed;
     public Slider FPSSlider;
     public Text CurrentFPS;
 
 	public void PlayTraining() { SceneManager.LoadScene (1); }
 	public void PlayAutonomous() { SceneManager.LoadScene (2); }
+    public void ChangeTopSpeed(float value) { CurrentTopSpeed.text = value.ToString(); }
     public void ChangeFPS(float value) { CurrentFPS.text = value.ToString(); }
 
     public void ApplySettings()
     {
         try
         {
-            SettingsManager.Instance.settings.width = Int32.Parse(WidthField.text);
-            SettingsManager.Instance.settings.height = Int32.Parse(HeightField.text);
-            SettingsManager.Instance.settings.fps = (int) FPSSlider.value;
-            SettingsManager.Instance.settings.ip = IPField.text;
-            SettingsManager.Instance.settings.port = Int32.Parse(PortField.text);
+            SettingsManager.Instance.Settings.Width = Int32.Parse(WidthField.text);
+            SettingsManager.Instance.Settings.Height = Int32.Parse(HeightField.text);
+            SettingsManager.Instance.Settings.TopSpeed = (int)TopSpeedSlider.value;
+            SettingsManager.Instance.Settings.FPS = (int)FPSSlider.value;
+            SettingsManager.Instance.Settings.IP = IPField.text;
+            SettingsManager.Instance.Settings.Port = Int32.Parse(PortField.text);
         }
         catch (OverflowException)
         {
@@ -36,13 +40,15 @@ public class MenuScript : MonoBehaviour {
 
     public void RevertSettings()
     {
-        Settings settings = SettingsManager.Instance.settings;
-        WidthField.text = settings.width.ToString();
-        HeightField.text = settings.height.ToString();
-        FPSSlider.value = settings.fps;
-        CurrentFPS.text = settings.fps.ToString();
-        IPField.text = settings.ip;
-        PortField.text = settings.port.ToString();
+        Settings settings = SettingsManager.Instance.Settings;
+        WidthField.text = settings.Width.ToString();
+        HeightField.text = settings.Height.ToString();
+        TopSpeedSlider.value = settings.TopSpeed;
+        CurrentTopSpeed.text = settings.TopSpeed.ToString();
+        FPSSlider.value = settings.FPS;
+        CurrentFPS.text = settings.FPS.ToString();
+        IPField.text = settings.IP;
+        PortField.text = settings.Port.ToString();
     }
 
     private void Start()

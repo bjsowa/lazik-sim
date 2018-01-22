@@ -52,18 +52,18 @@ public class UIScript : MonoBehaviour {
 
     public void ToggleRecord()
     {
-        if (m_Record.isSaving)
+        if (m_Record.IsSaving)
             return;
 
-        if (!m_Record.isRecording)
+        if (!m_Record.IsRecording)
         {
-            m_Record.isRecording = true;
-            if (m_Record.isRecording)
+            m_Record.IsRecording = true;
+            if (m_Record.IsRecording)
                 m_RecordImage.sprite = m_StopSprite;
         }
         else
         {
-            m_Record.isRecording = false;
+            m_Record.IsRecording = false;
             m_RecordImage.sprite = m_RecordSprite;
         }
     }
@@ -88,8 +88,8 @@ public class UIScript : MonoBehaviour {
                 m_ModeText.text = m_BaseMode + "Manual";
         }
 
-        if (m_Record.isSaving)
-            m_CollectingDataText.text = m_BaseCollectingData + m_Record.getSavePercent().ToString() + " %";
+        if (m_Record.IsSaving)
+            m_CollectingDataText.text = m_BaseCollectingData + m_Record.GetSavePercent().ToString() + " %";
         else
             m_CollectingDataText.text = "";
     }

@@ -10,7 +10,7 @@ public class PidController : MonoBehaviour
 	[SerializeField] private float m_TopSpeed = 30f;
 	[SerializeField] private float m_P = 1f;
 	[SerializeField] private float m_I = 1f;
-	[SerializeField] private float m_D = 1f;
+	[SerializeField] private float m_D = 0f;
 	[SerializeField] private float m_SpeedThreshold = 1f;
 
     // Input Values
@@ -27,6 +27,9 @@ public class PidController : MonoBehaviour
 	private void Awake()
     {
 		m_Car = GetComponent<CarController> ();
+
+        if (SettingsManager.Instance != null)
+            m_TopSpeed = SettingsManager.Instance.Settings.TopSpeed;
 	}
 
     private void Start()
@@ -69,9 +72,6 @@ public class PidController : MonoBehaviour
             Proportion[i] = (m_P * newError) / m_TopSpeed;
             Integral[i] += (m_I * (newError + Errors[i]) / 2f * Time.deltaTime) / m_TopSpeed;
             Derivative[i] = (m_D * (newError - Errors[i]) / Time.deltaTime) / m_TopSpeed;
-
-            Debug.Log("Proportion: " + Proportion[i].ToString());
-            Debug.Log("Integral: " + Integral[i].ToString());
 
             Proportion[i] = Mathf.Clamp(Proportion[i], -1f, 1f);
 

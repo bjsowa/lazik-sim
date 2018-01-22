@@ -17830,12 +17830,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Cameras:
-  - name: Left
-    camera: {fileID: 20429719947012360}
-  - name: Center
-    camera: {fileID: 20769545989234034}
-  - name: Right
-    camera: {fileID: 20676455179812908}
+  - Name: Left
+    Camera: {fileID: 20429719947012360}
+  - Name: Center
+    Camera: {fileID: 20769545989234034}
+  - Name: Right
+    Camera: {fileID: 20676455179812908}
 --- !u!114 &114272115550781778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17870,10 +17870,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bbebeb2cc0e3e4c94690439cf9d732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TopSpeed: 100
-  m_P: 1
+  m_TopSpeed: 10
+  m_P: 2
   m_I: 1
-  m_D: 0
+  m_D: 0.03
   m_SpeedThreshold: 1
 --- !u!114 &114827055081619100
 MonoBehaviour:
@@ -17910,7 +17910,7 @@ MonoBehaviour:
   m_CentreOfMassOffset: {x: 0, y: 0, z: 0}
   m_StallTorque: 20
   m_NoLoadSpeed: 60
-  m_BreakTorque: 100
+  m_BreakTorque: 50
   m_DownForce: 100
 --- !u!124 &124098232103002298
 Behaviour:

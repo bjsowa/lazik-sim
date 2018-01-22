@@ -8,8 +8,8 @@ using SimpleFileBrowser;
 [Serializable]
 public class MyCamera
 {
-    public string name;
-    public Camera camera;
+    public string Name;
+    public Camera Camera;
 }
 
 internal class CarSample
@@ -61,28 +61,28 @@ public class RecordScript : MonoBehaviour
         }
         else
         {
-            width = SettingsManager.Instance.settings.width;
-            height = SettingsManager.Instance.settings.height;
-            fps = SettingsManager.Instance.settings.fps;
+            width = SettingsManager.Instance.Settings.Width;
+            height = SettingsManager.Instance.Settings.Height;
+            fps = SettingsManager.Instance.Settings.FPS;
         }
 
         m_TargetTexture = new RenderTexture(width,height, 24, RenderTextureFormat.ARGB32);
-        foreach( MyCamera cam in m_Cameras )
-            cam.camera.targetTexture = m_TargetTexture;
+        foreach (MyCamera cam in m_Cameras)
+            cam.Camera.targetTexture = m_TargetTexture;
 
         m_FrameDelay = 1 / ((float)fps);
     }
 
-    public int totalSamples { get; private set; }
-    public bool isSaving { get; private set; }
+    public int TotalSamples { get; private set; }
+    public bool IsSaving { get; private set; }
 
-    public int getSavePercent()
+    public int GetSavePercent()
     {
-        float part = (float)(totalSamples - m_CarSamples.Count) / totalSamples;
+        float part = (float)(TotalSamples - m_CarSamples.Count) / TotalSamples;
         return (int)Math.Round(100f * part);
     }
 
-    public bool isRecording {
+    public bool IsRecording {
 		get {
 			return m_IsRecording;
 		}
@@ -109,8 +109,8 @@ public class RecordScript : MonoBehaviour
                     m_SavedPosition = transform.position;
                     m_SavedRotation = transform.rotation;
                     m_SavedVelocity = m_Rigidbody.velocity;
-                    totalSamples = m_CarSamples.Count;
-                    isSaving = true;
+                    TotalSamples = m_CarSamples.Count;
+                    IsSaving = true;
                     StartCoroutine(WriteSamplesToDisk());
                 }
             }
@@ -150,7 +150,7 @@ public class RecordScript : MonoBehaviour
             // Capture and Persist Image
             string paths = "";
             foreach (MyCamera cam in m_Cameras)
-                paths += WriteImage(cam.camera, cam.name, sample.TimeStamp) + ",";
+                paths += WriteImage(cam.Camera, cam.Name, sample.TimeStamp) + ",";
 
 			string row = string.Format ("{0}{1},{2},{3},{4}\n", 
                 paths, sample.Accel, sample.Steering, sample.Speed, sample.Mode);
@@ -164,7 +164,7 @@ public class RecordScript : MonoBehaviour
 		{
 			//all samples have been pulled
 			StopCoroutine(WriteSamplesToDisk());
-			isSaving = false;
+			IsSaving = false;
 
 			//need to reset the car back to its position before ending recording
 			transform.position = m_SavedPosition;
@@ -198,7 +198,7 @@ public class RecordScript : MonoBehaviour
 		}
 
 		// Only reschedule if the button hasn't been toggled
-		if (isRecording)
+		if (IsRecording)
 			StartCoroutine(Sample());
 
 	}
