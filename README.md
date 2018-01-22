@@ -3,7 +3,17 @@
 
 Symulacja uniwersyteckiego łazika w Unity
 
-# Skompilowane Wersje
+## Skompilowane Wersje
+
+Wersja 2, 22.01.17
+[Windows](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v2_Windows.zip)
+[Mac](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v2_Mac.zip)
+[Linux](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v2_Linux.zip)
+
+- nowy system sterowania
+- całkiem nowe menu
+- możliwość zapisywania i zmieniania ustawień
+- logo continuum w splash screenie
 
 Wersja 1, 14.01.17
 [Windows](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v1_Windows.zip)
