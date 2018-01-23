@@ -56,6 +56,9 @@ public class CommandServer : MonoBehaviour {
 
     public byte[] CaptureFrame(Camera camera)
     {
+        //force camera update 
+        camera.Render();
+
         RenderTexture targetTexture = camera.targetTexture;
         RenderTexture.active = targetTexture;
         Texture2D texture2D = new Texture2D(targetTexture.width, targetTexture.height, TextureFormat.RGB24, false);
