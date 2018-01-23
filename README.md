@@ -10,6 +10,7 @@ Wersja 2, 22.01.17
 [Mac](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v2_Mac.zip)
 [Linux](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v2_Linux.zip)
 
+- [23.01.17] - naprawiono bug: "symulator wysyła obraz z prawej kamery zamiast centralnej"
 - nowy system sterowania
 - całkiem nowe menu
 - możliwość zapisywania i zmieniania ustawień
