@@ -68,7 +68,10 @@ public class RecordScript : MonoBehaviour
 
         m_TargetTexture = new RenderTexture(width,height, 24, RenderTextureFormat.ARGB32);
         foreach (MyCamera cam in m_Cameras)
+        {
             cam.Camera.targetTexture = m_TargetTexture;
+            cam.Camera.enabled = false;
+        }
 
         m_FrameDelay = 1 / ((float)fps);
     }
