@@ -219,10 +219,10 @@ public class RecordScript : MonoBehaviour
 		texture2D.ReadPixels (new Rect (0, 0, targetTexture.width, targetTexture.height), 0, 0);
 		texture2D.Apply ();
 
-		byte[] image = texture2D.EncodeToJPG ();
+		byte[] image = texture2D.EncodeToPNG ();
 		DestroyImmediate (texture2D);
 
-        string filename = Path.Combine(m_DirFrames, prepend + "_" + timestamp + ".jpg");
+        string filename = Path.Combine(m_DirFrames, prepend + "_" + timestamp + ".png");
         string path = Path.Combine(m_SaveLocation, filename);
 
         File.WriteAllBytes (path, image);
