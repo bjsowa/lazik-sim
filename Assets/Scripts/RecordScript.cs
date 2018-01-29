@@ -134,8 +134,10 @@ public class RecordScript : MonoBehaviour
 	private IEnumerator WriteSamplesToDisk()
 	{
         //retrieve as fast as we can but still allow communication of main thread to screen and UISystem
-        yield return new WaitForSeconds(0.000f); 
-		if (m_CarSamples.Count > 0) {
+        yield return null; 
+
+		if (m_CarSamples.Count > 0)
+        {
 			//pull off a sample from the queue
 			CarSample sample = m_CarSamples.Dequeue();
 
@@ -152,30 +154,25 @@ public class RecordScript : MonoBehaviour
                 paths, sample.Accel, sample.Steering, sample.Speed, sample.Mode);
 			File.AppendAllText (Path.Combine (m_SaveLocation, m_CSVFileName), row);
 		}
-		if (m_CarSamples.Count > 0) {
+		if (m_CarSamples.Count > 0)
+        {
 			//request if there are more samples to pull
 			StartCoroutine(WriteSamplesToDisk()); 
 		}
 		else 
 		{
 			//all samples have been pulled
-			StopCoroutine(WriteSamplesToDisk());
 			IsSaving = false;
 
 			//need to reset the car back to its position before ending recording
 			transform.position = m_SavedPosition;
 			transform.rotation = m_SavedRotation;
             m_Rigidbody.velocity = m_SavedVelocity;
-
 		}
 	}
 
 	private IEnumerator Sample()
 	{
-		// Start the Coroutine to Capture Data.
-		// Persist that Information to a CSV and Perist the Camera Frame
-		yield return new WaitForSeconds(m_FrameDelay);
-
 		if (m_SaveLocation != "")
 		{
 			CarSample sample = new CarSample();
@@ -193,8 +190,10 @@ public class RecordScript : MonoBehaviour
 			sample = null;
 		}
 
-		// Only reschedule if the button hasn't been toggled
-		if (IsRecording)
+        yield return new WaitForSeconds(m_FrameDelay);
+
+        // Only reschedule if the button hasn't been toggled
+        if (IsRecording)
 			StartCoroutine(Sample());
 
 	}
