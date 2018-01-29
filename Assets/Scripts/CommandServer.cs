@@ -3,6 +3,7 @@ using SocketIO;
 using System.Collections.Generic;
 using System;
 using System.Globalization;
+using System.Threading;
 
 public class CommandServer : MonoBehaviour {
 
@@ -56,28 +57,17 @@ public class CommandServer : MonoBehaviour {
 
     private void EmitTelemetry()
     {
-        DateTime date1 = DateTime.Now;
-
         Dictionary<string, string> data = new Dictionary<string, string>();
-        data["speed"] = m_Car.Speed.ToString("N4", CultureInfo.InstalledUICulture);
+        data["speed"] = m_Car.Speed.ToString("N4", CultureInfo.InvariantCulture);
 
+        // This needs to run on unity main thread, because it involves rendering cameras
         foreach( MyCamera cam in m_Cameras )
             data[cam.Name] = Convert.ToBase64String(cam.CaptureFrame());
 
-        DateTime date2 = DateTime.Now;
-        long elapsed = date2.Ticks - date1.Ticks;
-        TimeSpan elapsedSpan = new TimeSpan(elapsed);
+        JSONObject json = new JSONObject(data);
 
-        Debug.Log("capturing: " + elapsedSpan.TotalSeconds.ToString("N3"));
-
-        m_Socket.Emit("telemetry", new JSONObject(data));
-
-        DateTime date3 = DateTime.Now;
-        elapsed = date3.Ticks - date2.Ticks;
-        elapsedSpan = new TimeSpan(elapsed);
-
-        Debug.Log("emitting: " + elapsedSpan.TotalSeconds.ToString("N3"));
-
+        // This can run in a separate thread
+        new Thread(() => m_Socket.Emit("telemetry", json)).Start();
     }
 
     private void Update()
