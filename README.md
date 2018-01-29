@@ -5,7 +5,19 @@ Symulacja uniwersyteckiego łazika w Unity
 
 ## Skompilowane Wersje
 
-Wersja 2, 22.01.17
+Wersja 3, 29.01.18
+[Windows](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v3_Windows.zip)
+[Mac](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v3_Mac.zip)
+[Linux](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v3_Linux.zip)
+
+- nagrywanie depth mapy każdej kamery
+- optymalizacje
+    - kamery łazika renderują tylko kiedy trzeba
+    - wysyłanie obrazu przez socket w oddzielnym wątku
+    - wyłączony VSync co pozwala na częstsze wysyłanie obrazu
+- naprawiono bug: "ostatnia nagrana próbka jest na początku trasy"
+
+Wersja 2, 22.01.18
 [Windows](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v2_Windows.zip)
 [Mac](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v2_Mac.zip)
 [Linux](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v2_Linux.zip)
@@ -16,7 +28,7 @@ Wersja 2, 22.01.17
 - możliwość zapisywania i zmieniania ustawień
 - logo continuum w splash screenie
 
-Wersja 1, 14.01.17
+Wersja 1, 14.01.18
 [Windows](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v1_Windows.zip)
 [Mac](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v1_Mac.zip)
 [Linux](https://bitbucket.org/thecontinuum/lazik-sim/downloads/lazik-sim_v1_Linux.zip)
@@ -76,19 +88,34 @@ Aplikacja zacznie odtwarzać trasę i zapisywać zrzuty z kamer na dysk.
 
 **Kamery**
 
-Łazik posiada 3 kamery: jedna centralna oraz 2 z boku obrócone o 20 stopni. Pozycje kamer przedstawia poniższy rysunek:
+Łazik posiada 3 zestawy kamer: jeden na środku oraz 2 z boku obrócone o 20 stopni. Pozycje kamer przedstawia poniższy rysunek:
 
 ![cameras](pictures/cameras.png)
+
+Każdy zestaw składa się z kamery renderującej rzeczywisty obraz oraz kamery, która renderuje depth mapę.  
+Przykład próbki jednego zestawu:
+
+![sample](pictures/sample.jpg)
+![sample_depth](pictures/sample_depth.png)
+
+Obraz z kamery nagrywany jest w formacie JPEG (dla oszczędności pamięci), a depth mapa w formacie PNG (aby uniknąć zniekształceń)
+
+**Czytanie depth mapy**
+
+Obiekt w odległości 30cm lub mniejszej - piksel czarny  
+Obiekt w odległości 30m lub większej - piksel biały  
+Wszystko pomiędzy liniowo przechodzi od czarnego do białego
+
 
 ### Czytanie logów
 
 We wskazanym folderze powstanie plik `driving_log.csv`. Każdy rekord tego pliku ma postać:
 
->`camera1,camera2,...,cameraN,accel,steering,speed`
+>`camera1,camera2,...,cameraN,accel,steering,speed,mode`
 
 Znaczenie powyższych pól:
 
-* camera - ścieżka do zrzutu z kamery (domyślnie są 3 kamery nazwane: left, center i right)
+* camera - ścieżka do zrzutu z kamery. Domyślnie jest 6 kamer: Left, Center, Right oraz odpowiadające im depth mapy
 * accel - wartość `Accel` zadana w danym momencie
 * steering - wartość `Steering` zadana w danym momencie
 * speed - prędkość łazika wyrażona w km/h (średnia prędkości na wszystkich kołach)
