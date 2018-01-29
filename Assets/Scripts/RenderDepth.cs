@@ -16,27 +16,15 @@ public class RenderDepth : MonoBehaviour
     
     private void Start()
     {
-        if (!SystemInfo.supportsImageEffects)
-        {
-            print("System doesn't support image effects");
-            enabled = false;
-            return;
-        }
         if (m_Shader == null || !m_Shader.isSupported)
         {
-            print("Shader " + m_Shader.name + " is not supported");
+            Debug.LogError("Shader " + m_Shader.name + " is not supported");
             enabled = false;
             return;
         }
 
         // turn on depth rendering for the camera so that the shader can access it via _CameraDepthTexture
         GetComponent<Camera>().depthTextureMode = DepthTextureMode.Depth;
-    }
-
-    private void OnDisable()
-    {
-        if (m_Material != null)
-            DestroyImmediate(m_Material);
     }
 
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
