@@ -5,13 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using SimpleFileBrowser;
 
-[Serializable]
-public class MyCamera
-{
-    public string Name;
-    public Camera Camera;
-}
-
 internal class CarSample
 {
     public Quaternion Rotation;
@@ -153,7 +146,7 @@ public class RecordScript : MonoBehaviour
             // Capture and Persist Image
             string paths = "";
             foreach (MyCamera cam in m_Cameras)
-                paths += WriteImage(cam.Camera, cam.Name, sample.TimeStamp) + ",";
+                paths += WriteImage(cam, sample.TimeStamp) + ",";
 
 			string row = string.Format ("{0}{1},{2},{3},{4}\n", 
                 paths, sample.Accel, sample.Steering, sample.Speed, sample.Mode);
@@ -206,23 +199,12 @@ public class RecordScript : MonoBehaviour
 
 	}
 
-	private string WriteImage (Camera camera, string prepend, string timestamp)
+	private string WriteImage (MyCamera camera, string timestamp)
 	{
-		//force camera update 
-		camera.Render();
+        byte[] image = camera.CaptureFrame();
 
-		RenderTexture targetTexture = camera.targetTexture;
-		RenderTexture.active = targetTexture;
-
-		Texture2D texture2D = new Texture2D (
-            targetTexture.width, targetTexture.height, TextureFormat.RGB24, false);
-		texture2D.ReadPixels (new Rect (0, 0, targetTexture.width, targetTexture.height), 0, 0);
-		texture2D.Apply ();
-
-		byte[] image = texture2D.EncodeToPNG ();
-		DestroyImmediate (texture2D);
-
-        string filename = Path.Combine(m_DirFrames, prepend + "_" + timestamp + ".png");
+        string extension = camera.IsPng ? ".png" : ".jpg";
+        string filename = Path.Combine(m_DirFrames, camera.Name + "_" + timestamp + extension);
         string path = Path.Combine(m_SaveLocation, filename);
 
         File.WriteAllBytes (path, image);

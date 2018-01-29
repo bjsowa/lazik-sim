@@ -182,7 +182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9ec9adf0914d1409c1d47e42e3d0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FrontCamera: {fileID: 1501203767}
+  m_Cameras:
+  - Name: image
+    Camera: {fileID: 1501203767}
+    IsPng: 0
+  - Name: image_depth
+    Camera: {fileID: 1938719024}
+    IsPng: 1
 --- !u!4 &708007489
 Transform:
   m_ObjectHideFlags: 0
@@ -407,28 +413,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114272115550781778, guid: f99651d89ac6e8645a9928a620799386,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114790036519934030, guid: f99651d89ac6e8645a9928a620799386,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114272115550781778, guid: f99651d89ac6e8645a9928a620799386,
-        type: 2}
-      propertyPath: m_Autonomous
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094378974908246, guid: f99651d89ac6e8645a9928a620799386, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f99651d89ac6e8645a9928a620799386, type: 2}
   m_IsPrefabParent: 0
+--- !u!20 &1938719024 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20866468356926040, guid: f99651d89ac6e8645a9928a620799386,
+    type: 2}
+  m_PrefabInternal: {fileID: 1938719023}
 --- !u!1001 &1960775767
 Prefab:
   m_ObjectHideFlags: 0

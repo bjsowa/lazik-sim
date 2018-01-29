@@ -8,6 +8,8 @@ public class RenderDepth : MonoBehaviour
     private void Awake()
     {
         m_Shader = Shader.Find("Custom/RenderDepth");
+        if (m_Shader == null)
+            Debug.LogError("shader null");
         m_Material = new Material(m_Shader);
         m_Material.hideFlags = HideFlags.HideAndDontSave;
     }

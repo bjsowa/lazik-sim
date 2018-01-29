@@ -303,7 +303,6 @@ GameObject:
   - component: {fileID: 20429719947012360}
   - component: {fileID: 124653957755559046}
   - component: {fileID: 114867060083571688}
-  - component: {fileID: 81786976472807012}
   m_Layer: 0
   m_Name: LeftDepthCamera
   m_TagString: Untagged
@@ -773,7 +772,6 @@ GameObject:
   - component: {fileID: 4276948103992592}
   - component: {fileID: 20730899263651004}
   - component: {fileID: 124138783871972986}
-  - component: {fileID: 81785545494340770}
   m_Layer: 0
   m_Name: LeftCamera
   m_TagString: Untagged
@@ -1177,7 +1175,6 @@ GameObject:
   - component: {fileID: 20866468356926040}
   - component: {fileID: 124418129847384684}
   - component: {fileID: 114804642173761428}
-  - component: {fileID: 81311403379245238}
   m_Layer: 0
   m_Name: CenterDepthCamera
   m_TagString: Untagged
@@ -1246,7 +1243,6 @@ GameObject:
   - component: {fileID: 4589182296657852}
   - component: {fileID: 20158772290851414}
   - component: {fileID: 124073291605512434}
-  - component: {fileID: 81201319072288906}
   m_Layer: 0
   m_Name: RightCamera
   m_TagString: Untagged
@@ -1265,7 +1261,6 @@ GameObject:
   - component: {fileID: 20676455179812908}
   - component: {fileID: 124454700199170690}
   - component: {fileID: 114139616085996284}
-  - component: {fileID: 81057258142358810}
   m_Layer: 0
   m_Name: RightDepthCamera
   m_TagString: Untagged
@@ -2414,7 +2409,6 @@ GameObject:
   - component: {fileID: 4642811166824982}
   - component: {fileID: 20769545989234034}
   - component: {fileID: 124212711333580796}
-  - component: {fileID: 81625719170117282}
   m_Layer: 0
   m_Name: CenterCamera
   m_TagString: Untagged
@@ -8670,7 +8664,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1245542968125896}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -8742,7 +8736,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1056037349642112}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -8753,7 +8747,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 30
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -8778,7 +8772,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1251665178920142}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -8789,7 +8783,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 30
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -8814,7 +8808,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1139578442772868}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -8850,7 +8844,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1495847089013976}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -8886,7 +8880,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1228794031521004}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -8897,7 +8891,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 30
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -17997,20 +17991,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &81057258142358810
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1251665178920142}
-  m_Enabled: 0
---- !u!81 &81201319072288906
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1245542968125896}
-  m_Enabled: 0
 --- !u!81 &81257280335322276
 AudioListener:
   m_ObjectHideFlags: 1
@@ -18018,34 +17998,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750816570744724}
   m_Enabled: 1
---- !u!81 &81311403379245238
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1228794031521004}
-  m_Enabled: 0
---- !u!81 &81625719170117282
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1495847089013976}
-  m_Enabled: 0
---- !u!81 &81785545494340770
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1139578442772868}
-  m_Enabled: 0
---- !u!81 &81786976472807012
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1056037349642112}
-  m_Enabled: 0
 --- !u!114 &114139616085996284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18057,7 +18009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c730edd66542a134a8b36aaa49679a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DepthLevel: 0.5
 --- !u!114 &114253828492840782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18072,16 +18023,22 @@ MonoBehaviour:
   m_Cameras:
   - Name: Left
     Camera: {fileID: 20730899263651004}
+    IsPng: 0
   - Name: Left_Depth
     Camera: {fileID: 20429719947012360}
+    IsPng: 1
   - Name: Center
     Camera: {fileID: 20769545989234034}
+    IsPng: 0
   - Name: Center_Depth
     Camera: {fileID: 20866468356926040}
+    IsPng: 1
   - Name: Right
     Camera: {fileID: 20158772290851414}
+    IsPng: 0
   - Name: Right_Depth
     Camera: {fileID: 20676455179812908}
+    IsPng: 1
 --- !u!114 &114272115550781778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18093,7 +18050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96468c245ae8e0d4f8f1c7a7b8b0542e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Autonomous: 0
+  m_Autonomous: 1
 --- !u!114 &114651238465096754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18132,7 +18089,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c730edd66542a134a8b36aaa49679a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DepthLevel: 0.5
 --- !u!114 &114827055081619100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18155,7 +18111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c730edd66542a134a8b36aaa49679a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DepthLevel: 0.5
 --- !u!114 &114912262301472364
 MonoBehaviour:
   m_ObjectHideFlags: 1

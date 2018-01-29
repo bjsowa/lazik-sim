@@ -35,6 +35,9 @@ public class SettingsManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            //Disable Vsync
+            QualitySettings.vSyncCount = 0;
         }
         else
         {

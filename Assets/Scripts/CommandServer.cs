@@ -6,7 +6,7 @@ using System.Globalization;
 
 public class CommandServer : MonoBehaviour {
 
-    [SerializeField] private Camera m_FrontCamera;
+    [SerializeField] private MyCamera[] m_Cameras;
 
 	private SocketIOComponent m_Socket;
     private bool m_IsOpen = false;
@@ -54,27 +54,30 @@ public class CommandServer : MonoBehaviour {
         m_Request = true;
     }
 
-    public byte[] CaptureFrame(Camera camera)
-    {
-        //force camera update 
-        camera.Render();
-
-        RenderTexture targetTexture = camera.targetTexture;
-        RenderTexture.active = targetTexture;
-        Texture2D texture2D = new Texture2D(targetTexture.width, targetTexture.height, TextureFormat.RGB24, false);
-        texture2D.ReadPixels(new Rect(0, 0, targetTexture.width, targetTexture.height), 0, 0);
-        texture2D.Apply();
-        byte[] image = texture2D.EncodeToJPG();
-        DestroyImmediate(texture2D); // Required to prevent leaking the texture
-        return image;
-    }
-
     private void EmitTelemetry()
     {
+        DateTime date1 = DateTime.Now;
+
         Dictionary<string, string> data = new Dictionary<string, string>();
         data["speed"] = m_Car.Speed.ToString("N4", CultureInfo.InstalledUICulture);
-        data["image"] = Convert.ToBase64String(CaptureFrame(m_FrontCamera));
+
+        foreach( MyCamera cam in m_Cameras )
+            data[cam.Name] = Convert.ToBase64String(cam.CaptureFrame());
+
+        DateTime date2 = DateTime.Now;
+        long elapsed = date2.Ticks - date1.Ticks;
+        TimeSpan elapsedSpan = new TimeSpan(elapsed);
+
+        Debug.Log("capturing: " + elapsedSpan.TotalSeconds.ToString("N3"));
+
         m_Socket.Emit("telemetry", new JSONObject(data));
+
+        DateTime date3 = DateTime.Now;
+        elapsed = date3.Ticks - date2.Ticks;
+        elapsedSpan = new TimeSpan(elapsed);
+
+        Debug.Log("emitting: " + elapsedSpan.TotalSeconds.ToString("N3"));
+
     }
 
     private void Update()

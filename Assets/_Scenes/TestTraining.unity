@@ -339,7 +339,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de26c51085d866d46ae1725136967744, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1378401922
+--- !u!1001 &1474000438
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -377,21 +377,6 @@ Prefab:
     - target: {fileID: 4556483709929028, guid: f99651d89ac6e8645a9928a620799386, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20866468356926040, guid: f99651d89ac6e8645a9928a620799386,
-        type: 2}
-      propertyPath: far clip plane
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 20429719947012360, guid: f99651d89ac6e8645a9928a620799386,
-        type: 2}
-      propertyPath: far clip plane
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 20676455179812908, guid: f99651d89ac6e8645a9928a620799386,
-        type: 2}
-      propertyPath: far clip plane
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f99651d89ac6e8645a9928a620799386, type: 2}
